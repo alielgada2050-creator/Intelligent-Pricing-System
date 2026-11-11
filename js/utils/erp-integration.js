@@ -7,14 +7,14 @@ const ERPIntegration = {
   _mappedRows(items) {
     return (items || []).map(itm => {
       const p = itm.priceItem || getItemByCode(itm.code) || {};
-      const unit = itm.contractPrice != null ? itm.contractPrice : (itm.customPrice || p.newPrice || 0);
+      const unit = itm.contractPrice != null ? itm.contractPrice : (itm.customPrice != null ? itm.customPrice : (p.newPrice != null ? p.newPrice : null));
       return {
         code: itm.code,
         name: p.arDesc || '',
-        uom: p.uom || 'EA',
+        uom: p.uom || '',
         qty: itm.qty,
         unitPrice: unit,
-        total: Math.round(unit * itm.qty),
+        total: unit == null ? null : Math.round(unit * itm.qty),
       };
     });
   },
@@ -29,19 +29,19 @@ const ERPIntegration = {
     setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 800);
   },
 
-  /* ─── Odoo CSV (matching Odoo product import template) ─── */
+  /* ─── Odoo product import staging CSV; not a live Odoo connection ─── */
   exportToOdoo(project, items) {
     const rows = [['External ID', 'Name', 'Description', 'Internal Reference', 'Product Category', 'Sale Price', 'Cost', 'UoM', 'Type']];
-    this._mappedRows(items).forEach((r, i) => {
+    this._mappedRows(items).forEach(r => {
       rows.push([
         `sec_boq_${r.code}`,
         r.name.slice(0, 80),
         r.name,
         r.code,
-        'SEC Unified Contract 2026',
-        r.unitPrice,
-        r.unitPrice,
-        'Units',
+        '',
+        r.unitPrice == null ? '' : r.unitPrice,
+        '',
+        r.uom,
         'service',
       ]);
     });

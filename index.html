@@ -9,9 +9,10 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="css/style.css?v=1">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
 /* ── Premium Corporate Logo Styles ── */
 .logo-pill {
@@ -360,6 +361,28 @@
   border-color: rgba(0,128,255,0.6);
   box-shadow: 0 0 0 3px rgba(0,128,255,0.12);
 }
+/* Corporate refinement: calm, legible and suitable for contract governance. */
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
+.brand-bar { background:linear-gradient(110deg,#062f4f 0%,#075b82 54%,#087a9b 100%); box-shadow:0 2px 12px rgba(5,49,79,.28); }
+.brand-bar::before,.hud-scan { animation:none; }
+.brand-center-inner { border-radius:12px; box-shadow:0 5px 16px rgba(0,43,74,.22); animation:none; }
+.sys-name-main { animation:none; background:#074c73; -webkit-text-fill-color:#074c73; }
+.logo-container,.nav-item,.qa-card,.stat-card { box-shadow:none; }
+.nav-item:hover,.qa-card:hover,.stat-card:hover { transform:translateY(-1px); box-shadow:var(--shadow-sm); }
+.hud-panel { border-radius:14px; transform:none; box-shadow:0 10px 28px rgba(2,31,55,.24); }
+.card { border-radius:12px; }
+.data-table th { font-size:10px; letter-spacing:.35px; }
+/* Enterprise control-room system — prioritises contracts, numbers and decisions. */
+:root { --font-main:'Tajawal','Segoe UI',Tahoma,sans-serif; --se-navy:#123047; --se-blue:#176a86; --sec-primary:#087f5b; --sec-primary-2:#056746; --sec-gold:#a66f15; --accent-blue:#176a86; --bg-body:#f4f7f9; --bg-card:#fff; --bg-surface:#f8fafb; --text-h:#122b3d; --text-main:#2c4150; --text-body:#526674; --text-sub:#657987; --border:#dbe4e9; --shadow-sm:0 1px 2px rgba(18,48,71,.05); --shadow-md:0 8px 20px rgba(18,48,71,.08); }
+[data-theme="dark"] { --bg-body:#101d27; --bg-card:#152632; --bg-surface:#192e3b; --text-h:#f2f7f9; --text-main:#d7e2e8; --text-body:#bdcdd6; --text-sub:#a5bac5; --border:#2d4553; --sec-primary:#42c192; --sec-primary-2:#22956c; --sec-gold:#e3b75c; }
+body { font-size:15px; letter-spacing:0; background:var(--bg-body); }
+.brand-bar { position:relative; padding:9px 24px; background:#123047; border-bottom:3px solid #d18c19; }
+.brand-bar::after { display:none; }.brand-center-inner { background:transparent; border:0; border-radius:0; box-shadow:none; padding:4px 24px; }.brand-center-text{text-align:center}.brand-kicker{font:600 9px var(--font-mono);letter-spacing:1.8px;color:#87c8df}.sys-name-main{color:#fff!important;-webkit-text-fill-color:#fff!important;background:none!important;font-size:22px!important}.brand-center .sys-sub{color:#c8dbe4!important;font-size:11px}.logo-container { border-radius:6px; min-height:56px; padding:5px 12px; background:#fff; border:0; box-shadow:0 2px 8px rgba(0,0,0,.16); }.logo-container img{height:48px;}
+.sidebar { width:272px; background:var(--bg-card); }.sidebar-logo { padding:18px; }.nav-wrap{padding:14px 11px;gap:5px}.nav-item { min-height:44px; padding:10px 12px; border-radius:7px; box-shadow:none; }.nav-item.active { box-shadow:none; background:rgba(8,127,91,.11); }.nav-label{margin-top:14px;}
+.top-bar { padding:13px 24px; top:78px; }.page-area{padding:24px;max-width:1680px}.card,.stat-card,.qa-card { border-radius:10px; }.btn { min-height:38px; border-radius:7px; }.form-control { min-height:40px; border-radius:7px; }.form-control:focus,.btn:focus-visible,.nav-item:focus-visible,.toggle-btn:focus-visible { outline:3px solid rgba(23,106,134,.28); outline-offset:2px; }
+.hud-panel{background:#123047;border:0;border-radius:10px;padding:24px;}.hud-grid-bg,.hud-corners{display:none}.hud-title{font-size:24px;text-shadow:none}.hud-emblem{border-radius:10px;transform:none;background:#176a86;box-shadow:none}.qa-card{padding:16px}.qa-icon{border-radius:8px;box-shadow:none}.section-hud{color:var(--text-h);letter-spacing:.4px}.stat-card{padding:16px;text-align:right}.data-table td{padding:11px 12px}.data-table th{padding:12px;font-size:11px}
+.account-chip{min-height:38px;display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:7px;background:var(--bg-card);color:var(--text-h);padding:4px 9px;cursor:pointer;text-align:right}.account-avatar,.auth-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#176a86;color:#fff;font-weight:800}.account-copy{display:flex;flex-direction:column;line-height:1.1}.account-copy b{font-size:11px}.account-copy small{font-size:9px;color:var(--text-sub);margin-top:2px}.auth-modal{position:fixed;inset:0;z-index:500;background:rgba(8,25,37,.58);display:grid;place-items:center;padding:20px}.auth-dialog{position:relative;width:min(420px,100%);border-radius:12px;background:var(--bg-card);color:var(--text-main);box-shadow:0 22px 56px rgba(0,0,0,.3);padding:30px;text-align:center}.auth-dialog h2{font-size:20px;color:var(--text-h);margin:14px 0 8px}.auth-dialog>p{font-size:13px;color:var(--text-sub);line-height:1.7}.auth-close{position:absolute;top:10px;left:10px;width:36px;height:36px;border:0;background:transparent;color:var(--text-sub);font-size:25px;cursor:pointer}.auth-mark{width:48px;height:48px;margin:auto;border-radius:10px;font-size:17px}.auth-logo-wrap{height:58px;display:flex;justify-content:center;align-items:center;margin:0 auto 8px}.auth-brand-logo{max-height:58px;max-width:220px;object-fit:contain}.google-signin-mount{display:flex;justify-content:center;margin:20px 0 12px;min-height:42px}.google-fallback,.auth-guest{width:100%;min-height:44px;border:1px solid var(--border);border-radius:7px;background:var(--bg-surface);color:var(--text-h);font:inherit;font-weight:700;cursor:pointer}.google-fallback span{font-family:Arial;font-size:20px;color:#4285f4;margin-left:8px}.auth-divider{display:flex;align-items:center;gap:10px;color:var(--text-muted);font-size:12px;margin:14px 0}.auth-divider::before,.auth-divider::after{content:'';height:1px;flex:1;background:var(--border)}.auth-note{font-size:11px!important;margin-top:14px}.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0}.role-grid button{min-height:40px;border:1px solid var(--border);border-radius:7px;background:var(--bg-surface);color:var(--text-main);font:inherit;cursor:pointer}.auth-guest.danger{margin-top:4px;color:var(--accent-red);border-color:rgba(220,38,38,.3)}
+@media(max-width:720px){.brand-bar{padding:7px 10px}.logo-container{display:flex;min-width:64px;padding:4px 7px}.logo-container img{height:36px;max-width:75px}.brand-center-inner{padding:4px 6px}.brand-kicker,.brand-center .sys-sub{display:none}.sys-name-main{font-size:14px!important}.page-area{padding:16px}.top-bar{padding:11px 14px}.top-bar-title h2{font-size:14px}.account-copy{display:none}.account-chip{padding:4px}.grid-4{grid-template-columns:1fr 1fr}.auth-dialog{padding:26px 20px}}
 </style>
 </head>
 <body class="lang-ar">
@@ -376,10 +399,10 @@
     <!-- Center Brand Info -->
     <div class="brand-center" onclick="document.getElementById('sidebar').classList.toggle('open')" style="cursor:pointer;" title="توسيع/طي القائمة الجانبية — Toggle Sidebar">
       <div class="brand-center-inner">
-        <img class="brand-center-logo" src="images/asas_logo_center.png" alt="شعار منصة العقود الذكية" onerror="this.onerror=null; this.style.display='none';">
         <div class="brand-center-text">
-          <div class="sys-name-main">منصة العقود الذكية للإنشاءات ومشاريع البنية التحتية</div>
-          <div class="sys-sub" id="brand-tagline">النظام الذكي للتسعير والمقايسات • RFx 4000083770</div>
+          <div class="brand-kicker">CONTRACT INTELLIGENCE PLATFORM</div>
+          <div class="sys-name-main">منصة التسعير والعقود الذكية</div>
+          <div class="sys-sub" id="brand-tagline">إدارة المقايسات والتكلفة والتنفيذ • RFx 4000083770</div>
         </div>
       </div>
     </div>
@@ -416,6 +439,13 @@
       </div>
       <div class="nav-item" data-page="contracts">
         <span class="nav-icon">📑</span><span class="nav-txt" data-k="nav.contracts"></span>
+      </div>
+      <div class="nav-item" data-page="profitability">
+        <span class="nav-icon">📈</span><span class="nav-txt" data-k="nav.profitability"></span>
+        <span class="nav-badge" style="background:linear-gradient(135deg,#047857,#0ea5a4);">COST</span>
+      </div>
+      <div class="nav-item" data-page="operations">
+        <span class="nav-icon">🦺</span><span class="nav-txt" data-k="nav.operations"></span>
       </div>
 
       <div class="nav-label" id="nlbl-tools"></div>
@@ -491,6 +521,7 @@
         <button class="btn btn-primary btn-sm" onclick="App.newBOQ()">
           ➕ <span data-k="btn.newBOQ"></span>
         </button>
+        <div id="auth-account"></div>
         <button class="btn btn-outline btn-sm btn-icon" id="menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')" style="display:none">☰</button>
       </div>
     </header>
@@ -509,7 +540,7 @@
 <script src="js/data/price-list.js"></script>
 <script src="js/data/dependencies.js"></script>
 <script src="js/utils/productivity-engine.js"></script>
-<script src="js/utils/erp-integration.js"></script>
+<script src="js/utils/erp-integration.js?v=2"></script>
 <script src="js/utils/export.js"></script>
 <script src="js/pdf-analyzer.js"></script>
 <script src="js/ai-engine.js"></script>
@@ -519,10 +550,13 @@
 <script src="js/drawing-analyzer.js"></script>
 <script src="js/boq-importer.js"></script>
 <script src="js/budget-balancer.js"></script>
-<script src="js/utils/backup-manager.js"></script>
+<script src="js/utils/backup-manager.js?v=2"></script>
 <script src="js/utils/project-link.js"></script>
 <script src="js/utils/se-news.js"></script>
-<script src="js/voice-assistant.js"></script>
+<script src="js/voice-assistant.js?v=2"></script>
+<script src="js/utils/field-operations.js?v=1"></script>
+<script src="js/utils/project-profitability.js?v=2"></script>
+<script src="js/utils/auth.js"></script>
 <script>
 /* ================================================================
    منصة العقود الذكية للإنشاءات ومشاريع البنية التحتية v4.0 — Main Application
@@ -535,6 +569,8 @@ const TR = {
     'nav.dashboard': 'لوحة التحكم',
     'nav.news': 'مركز أخبار الطاقة والمشاريع',
     'nav.contracts': 'إدارة العقود',
+    'nav.profitability': 'مركز الربحية والتنفيذ',
+    'nav.operations': 'التنفيذ والموارد',
     'nav.boq': 'منشئ المقايسات',
     'nav.emergency_boq': 'منشئ مقايسات الطوارئ (SAP 145%)',
     'nav.ai': 'الذكاء الاصطناعي (تحليل و Gemini)',
@@ -554,6 +590,8 @@ const TR = {
     'page.dashboard': 'لوحة التحكم',
     'page.news': 'مركز أخبار الطاقة والمشاريع',
     'page.contracts': 'إدارة العقود',
+    'page.profitability': 'مركز الربحية والتنفيذ',
+    'page.operations': 'التنفيذ والموارد — سجل أمر العمل',
     'page.boq': 'منشئ المقايسات',
     'page.emergency_boq': 'منشئ مقايسات الطوارئ (SAP 145%)',
     'page.ai': 'الذكاء الاصطناعي — تحليل الملفات ومساعد Gemini',
@@ -573,6 +611,8 @@ const TR = {
     'nav.dashboard': 'Dashboard',
     'nav.news': 'Energy & Projects News Center',
     'nav.contracts': 'Contract Manager',
+    'nav.profitability': 'Profitability & Delivery Center',
+    'nav.operations': 'Field Execution & Resources',
     'nav.boq': 'BOQ Builder',
     'nav.emergency_boq': 'Emergency BOQ Builder (SAP 145%)',
     'nav.ai': 'AI (Analysis & Gemini)',
@@ -592,6 +632,8 @@ const TR = {
     'page.dashboard': 'Dashboard',
     'page.news': 'Energy & Projects News Center',
     'page.contracts': 'Contract Manager',
+    'page.profitability': 'Profitability & Delivery Center',
+    'page.operations': 'Field Execution & Resources — Work Order Log',
     'page.boq': 'BOQ Builder',
     'page.emergency_boq': 'Emergency BOQ Builder (SAP 145%)',
     'page.ai': 'AI — File Analysis & Gemini Assistant',
@@ -770,7 +812,7 @@ const App = {
       el.classList.toggle('active', el.dataset.page === page);
     });
 
-    const icons = { news:'🛰️', dashboard:'🏠', contracts:'📑', boq:'📋', emergency_boq:'🚨', pdf:'📄', gemini:'✨', ai:'🤖', compare:'⚖️', certificate:'📜', link:'🔗', search:'🔍', pricelist:'📊', saved:'💾', backup:'🗄️', support:'📞' };
+    const icons = { news:'🛰️', dashboard:'🏠', contracts:'📑', profitability:'📈', operations:'🦺', boq:'📋', emergency_boq:'🚨', pdf:'📄', gemini:'✨', ai:'🤖', compare:'⚖️', certificate:'📜', link:'🔗', search:'🔍', pricelist:'📊', saved:'💾', backup:'🗄️', support:'📞' };
     document.getElementById('page-icon').textContent = icons[page] || '⚡';
     document.getElementById('page-title').textContent = T(`page.${page}`);
 
@@ -784,6 +826,8 @@ const App = {
       news:      () => this.renderNews(area),
       dashboard: () => this.renderDashboard(area),
       contracts: () => this.renderContracts(area),
+      profitability: () => this.renderProfitability(area),
+      operations: () => this.renderOperations(area),
       boq:       () => this.renderBOQ(area, false),
       emergency_boq: () => this.renderBOQ(area, true),
       ai:        () => this.renderAI(area),
@@ -1279,12 +1323,12 @@ const App = {
           <div style="display:flex;align-items:center;gap:16px;position:relative;flex-wrap:wrap;">
             <div style="width:56px;height:56px;background:linear-gradient(135deg,#4285F4,#8B5CF6);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 18px rgba(66,133,244,0.35);">✨</div>
             <div style="flex:1;min-width:220px;">
-              <div style="font-size:10px;color:#8B5CF6;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Google AI • Gemini</div>
-              <h2 style="font-size:20px;font-weight:900;color:var(--text-h);margin-bottom:3px;">${ar?'مساعد Gemini الذكي':'Gemini AI Assistant'}</h2>
-              <div style="font-size:12px;color:var(--text-sub);line-height:1.5;">${ar?'أجب عن الأسئلة الفنية وأسئلة العقد بسرعة، وابنِ مقايسات ذكية من قاعدة الأسعار الموحدة 920 بند':'Answer technical & contract questions fast, and build smart BOQs from the 920-item unified price list'}</div>
+              <div style="font-size:10px;color:#8B5CF6;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">AI ASSISTANT • LOCAL OR CLOUD</div>
+              <h2 style="font-size:20px;font-weight:900;color:var(--text-h);margin-bottom:3px;">${ar?'المساعد الذكي للبحث والتطوير':'AI Research & Development Assistant'}</h2>
+              <div style="font-size:12px;color:var(--text-sub);line-height:1.5;">${ar?'اسأل وابحث وطوّر المقايسات. اختر نموذجاً محلياً مجانياً أو مزوداً سحابياً بعد مراجعة إعدادات الخصوصية.':'Ask, research and develop BOQs. Choose a free local model or a cloud provider after reviewing privacy settings.'}</div>
             </div>
             <a href="${chatUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:13px;padding:11px 22px;background:linear-gradient(135deg,#4285F4,#8B5CF6);border:none;border-radius:12px;box-shadow:0 6px 18px rgba(66,133,244,0.4);">
-              💬 ${ar?'افتح محادثة Gemini — الرد هنا':'Open Gemini Chat — replies here'} ↗
+              💬 ${ar?'افتح محادثة Gemini الخارجية':'Open external Gemini chat'} ↗
             </a>
           </div>
         </div>
@@ -1332,12 +1376,12 @@ const App = {
         <div class="card" style="border:1px solid rgba(88,101,242,0.18);">
           <div class="card-head" style="background:linear-gradient(90deg,rgba(88,101,242,0.06),transparent);border-bottom:1px solid rgba(88,101,242,0.1);">
             <span style="font-size:16px;">🔐</span>
-            <span class="card-title">${ar?'إعدادات مفتاح API (اختياري)':'API Key Settings (optional)'}</span>
+            <span class="card-title">${ar?'إعدادات نموذج الذكاء الاصطناعي':'AI model settings'}</span>
             <span style="margin-${ar?'right':'left'}:auto;font-size:10.5px;color:var(--text-muted);">${ar?'لربط موفّر تلقائي داخل الصفحة':'Optional in-page provider'}</span>
           </div>
           <div class="card-body" style="display:flex;flex-direction:column;gap:12px;">
             <div style="font-size:11.5px;color:var(--text-muted);line-height:1.6;background:var(--bg-inset, rgba(0,0,0,0.03));border:1px dashed var(--border);border-radius:10px;padding:10px 14px;">
-              ${ar?'💬 الردود الرئيسية تتم عبر رابط محادثة Gemini في الأعلى. هذه الإعدادات اختيارية لاستخدام موفّر ذكاء اصطناعي (API) مباشرة من أي شركة داخل الصفحة.':'💬 Main replies happen via the Gemini chat link above. These settings are optional for direct in-page API use from any provider.'}
+            ${ar?'💬 النموذج المحلي (Ollama/LM Studio) لا يحتاج مفتاحاً لكنه يتطلب تثبيته وتشغيله على جهازك. عند اختيار مزود سحابي، ستُرسل أسئلتك وسياقها إليه. مفاتيح المتصفح غير مناسبة للإنتاج ولا تستخدمها مع بيانات سرية.':'💬 Local Ollama/LM Studio needs no API key but must be installed and running on your device. Cloud providers receive your prompt and context. Browser-stored keys are not production secrets; do not use them with confidential data.'}
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="ai-cfg-grid">
               <div>
@@ -1348,23 +1392,23 @@ const App = {
               </div>
               <div>
                 <label style="font-size:11px;font-weight:800;color:var(--text-sub);display:block;margin-bottom:5px;">${ar?'الموديل (Model)':'Model'} *</label>
-                <input id="ai-model" class="form-control" style="padding:9px 12px;font-family:var(--font-mono);font-size:12px;" placeholder="gpt-4o / gemini-1.5-flash / claude-3-5-sonnet..." value="${cfg.model}">
+                <input id="ai-model" class="form-control" style="padding:9px 12px;font-family:var(--font-mono);font-size:12px;" placeholder="gpt-4o / gemini-1.5-flash / claude-3-5-sonnet..." value="${esc(cfg.model)}">
               </div>
               <div style="grid-column:1 / -1;">
                 <label style="font-size:11px;font-weight:800;color:var(--text-sub);display:block;margin-bottom:5px;">${ar?'اسم الموفر (يظهر في الشاشة)':'Provider name (shown on screen)'}</label>
-                <input id="ai-provider-name" class="form-control" style="padding:9px 12px;font-size:12px;" placeholder="OpenAI / Groq / شركتي..." value="${cfg.providerName}">
+                <input id="ai-provider-name" class="form-control" style="padding:9px 12px;font-size:12px;" placeholder="OpenAI / Groq / شركتي..." value="${esc(cfg.providerName)}">
               </div>
               <div style="grid-column:1 / -1;">
                 <label style="font-size:11px;font-weight:800;color:var(--text-sub);display:block;margin-bottom:5px;">${ar?'رابط الـ API (Endpoint)':'API Endpoint URL'}</label>
-                <input id="ai-endpoint" class="form-control" style="padding:9px 12px;font-family:var(--font-mono);font-size:12px;direction:ltr;text-align:left;" placeholder="https://api.openai.com/v1" value="${cfg.endpoint}">
+                <input id="ai-endpoint" class="form-control" style="padding:9px 12px;font-family:var(--font-mono);font-size:12px;direction:ltr;text-align:left;" placeholder="https://api.openai.com/v1" value="${esc(cfg.endpoint)}">
               </div>
               <div style="grid-column:1 / -1;">
-                <label style="font-size:11px;font-weight:800;color:var(--text-sub);display:block;margin-bottom:5px;">${ar?'مفتاح الـ API':'API Key'} *</label>
+                <label id="ai-key-label" style="font-size:11px;font-weight:800;color:var(--text-sub);display:block;margin-bottom:5px;">${ar?'مفتاح الـ API':'API Key'}</label>
                 <div style="display:flex;gap:8px;align-items:center;">
-                  <input id="ai-key" type="password" class="form-control" style="padding:9px 12px;font-family:var(--font-mono);font-size:12px;direction:ltr;text-align:left;" placeholder="sk-..." value="${cfg.apiKey}">
+                  <input id="ai-key" type="password" class="form-control" style="padding:9px 12px;font-family:var(--font-mono);font-size:12px;direction:ltr;text-align:left;" placeholder="${cfg.provider === 'local' ? (ar ? 'غير مطلوب للنموذج المحلي' : 'Not required for local models') : 'API key'}" value="${esc(cfg.apiKey)}">
                   <button class="btn btn-outline" style="padding:8px 12px;font-size:11px;" onclick="App._aiToggleKey(this)">👁</button>
                 </div>
-                <div style="font-size:10.5px;color:var(--text-muted);margin-top:5px;line-height:1.5;">${ar?'🔒 يُحفظ المفتاح محلياً في متصفحك فقط (localStorage) ولا يُرسل لأي مكان إلا لمزوّد الخدمة.':'🔒 Your key is stored locally in your browser (localStorage) and is only sent to your chosen provider.'}</div>
+                <div id="ai-key-note" style="font-size:10.5px;color:var(--text-muted);margin-top:5px;line-height:1.5;">${cfg.provider === 'local' ? (ar ? 'النموذج المحلي يعمل على جهازك؛ لن يُرسل المفتاح.' : 'Local model runs on your device; no API key is sent.') : (ar?'مفتاح المزود السحابي يُحفظ في تخزين المتصفح غير المشفر؛ لا تستخدمه مع بيانات سرية.':'Cloud API keys are stored in unencrypted browser storage; do not use them with confidential data.')}</div>
               </div>
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
@@ -1380,6 +1424,7 @@ const App = {
     `;
     const inp = document.getElementById('gemini-input');
     if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') this._geminiSend(); });
+    if (cfg.provider === 'local') this._setLocalAiKeyUi(true);
   },
 
   _geminiOpenChat(q) {
@@ -1441,7 +1486,7 @@ const App = {
       ['mistral',  'Mistral AI'],
       ['deepseek', 'DeepSeek'],
       ['openrouter','OpenRouter (any model)'],
-      ['local',    'Local (Ollama / LM Studio)'],
+      ['local',    'Local free model (Ollama / LM Studio)'],
       ['custom',   'Custom / Any company'],
     ];
     return opts.map(o => {
@@ -1451,7 +1496,7 @@ const App = {
   },
 
   _aiProviderLabelAr(p) {
-    return { openai:'OpenAI (GPT)', google:'Google Gemini', anthropic:'Anthropic Claude', groq:'Groq', mistral:'Mistral AI', deepseek:'DeepSeek', openrouter:'OpenRouter', local:'محلي (Ollama / LM Studio)', custom:'مخصص / أي شركة' }[p] || p;
+    return { openai:'OpenAI (GPT)', google:'Google Gemini', anthropic:'Anthropic Claude', groq:'Groq', mistral:'Mistral AI', deepseek:'DeepSeek', openrouter:'OpenRouter', local:'محلي مجاني (Ollama / LM Studio)', custom:'مخصص / أي شركة' }[p] || p;
   },
 
   _aiPreset(provider) {
@@ -1473,6 +1518,7 @@ const App = {
     set('ai-model', p.model);
     const nameEl = document.getElementById('ai-provider-name');
     if (nameEl) nameEl.value = p.name;
+    this._setLocalAiKeyUi(provider === 'local');
     const st = document.getElementById('ai-status');
     if (st) { st.textContent = ar ? 'تم اختيار الإعدادات المسبقة — احفظ للتطبيق' : 'Preset loaded — save to apply'; st.style.color = 'var(--sec-gold)'; }
   },
@@ -1482,8 +1528,9 @@ const App = {
     const v = id => (document.getElementById(id)?.value || '').trim();
     const provider = v('ai-provider');
     if (!provider) { toast(ar?'اختر الموفر أولاً':'Select a provider first','warning'); return; }
+    if (!v('ai-endpoint') || !v('ai-model')) { toast(ar?'أدخل رابط الموفر والموديل':'Enter the provider endpoint and model','warning'); return; }
     const apiKey = v('ai-key');
-    if (!apiKey) { toast(ar?'أدخل مفتاح API':'Enter an API key','warning'); return; }
+    if (provider !== 'local' && !apiKey) { toast(ar?'أدخل مفتاح API للموفر السحابي':'Enter an API key for the cloud provider','warning'); return; }
     const cfg = {
       provider,
       providerName: v('ai-provider-name') || (document.getElementById('ai-provider')?.selectedOptions?.[0]?.text || provider),
@@ -1492,7 +1539,10 @@ const App = {
       apiKey,
       presetEndpoint: v('ai-endpoint')
     };
-    try { localStorage.setItem(this.AI.KEY, JSON.stringify(cfg)); } catch(e){}
+    try { localStorage.setItem(this.AI.KEY, JSON.stringify(cfg)); } catch(e) {
+      toast((ar ? 'تعذر حفظ إعدادات النموذج: ' : 'Could not save model settings: ') + e.message, 'error');
+      return;
+    }
     this.AI.config = cfg;
     toast(ar?'تم حفظ إعدادات الذكاء الاصطناعي':'AI settings saved','success');
     this._aiUpdateBadge();
@@ -1505,7 +1555,7 @@ const App = {
     const st = document.getElementById('ai-status');
     const box = document.getElementById('ai-test-result');
     const cfg = this._aiConfig();
-    if (!cfg.apiKey || !cfg.endpoint) { toast(ar?'احفظ الإعدادات أولاً':'Save settings first','warning'); return; }
+    if (!cfg.endpoint || (cfg.provider !== 'local' && !cfg.apiKey)) { toast(ar?'احفظ إعداد الموفر والرابط والمفتاح عند الحاجة':'Save provider, endpoint, and API key when required','warning'); return; }
     if (st) { st.textContent = ar?'جاري الاختبار...':'Testing...'; st.style.color = 'var(--text-sub)'; }
     if (box) { box.style.display = 'block'; box.innerHTML = `<span style="color:var(--text-sub);">⏳ ${ar?'جارٍ الاتصال...':'Connecting...'}</span>`; }
     this._aiRequest(cfg, this._geminiContext(), ar?'اختبر الاتصال برسالة قصيرة':'Test connection with a short message')
@@ -1521,11 +1571,30 @@ const App = {
 
   _aiReset() {
     const ar = this.lang === 'ar';
-    try { localStorage.removeItem(this.AI.KEY); } catch(e){}
+    try { localStorage.removeItem(this.AI.KEY); } catch(e) {
+      toast((ar ? 'تعذر مسح إعدادات النموذج: ' : 'Could not clear model settings: ') + e.message, 'error');
+      return;
+    }
     this.AI.config = this._aiDefaults();
     const key = document.getElementById('ai-key'); if (key) key.value = '';
     this._aiUpdateBadge();
     toast(ar?'تم مسح مفتاح API':'API key cleared');
+  },
+
+  _setLocalAiKeyUi(isLocal) {
+    const ar = this.lang === 'ar';
+    const key = document.getElementById('ai-key');
+    const label = document.getElementById('ai-key-label');
+    const note = document.getElementById('ai-key-note');
+    if (key) {
+      key.disabled = isLocal;
+      key.placeholder = isLocal ? (ar ? 'غير مطلوب للنموذج المحلي' : 'Not required for local models') : 'API key';
+      if (isLocal) key.value = '';
+    }
+    if (label) label.textContent = isLocal ? (ar ? 'مفتاح API (غير مطلوب محلياً)' : 'API key (not required locally)') : (ar ? 'مفتاح الـ API' : 'API Key');
+    if (note) note.textContent = isLocal
+      ? (ar ? 'ثبّت Ollama أو LM Studio وشغّل النموذج المحدد على جهازك. النموذج المحلي لا يحتاج مفتاح API.' : 'Install Ollama or LM Studio and run the selected model on your device. Local models do not need an API key.')
+      : (ar ? 'مفتاح المزود السحابي يُحفظ في تخزين المتصفح غير المشفر؛ لا تستخدمه مع بيانات سرية.' : 'Cloud API keys are stored in unencrypted browser storage; do not use them with confidential data.');
   },
 
   _aiToggleKey(btn) {
@@ -1540,13 +1609,15 @@ const App = {
     const ar = this.lang === 'ar';
     const badge = document.getElementById('ai-connected-badge');
     if (badge) {
-      if (cfg.apiKey && cfg.endpoint && cfg.model) {
-        badge.textContent = (cfg.providerName || cfg.provider) + ' • ' + cfg.model;
+      if ((cfg.provider === 'local' || cfg.apiKey) && cfg.endpoint && cfg.model) {
+        badge.textContent = (cfg.providerName || cfg.provider) + ' • ' + cfg.model + (cfg.provider === 'local' ? ' • local' : '');
         badge.style.background = 'rgba(0,132,61,0.1)';
         badge.style.color = 'var(--sec-primary)';
         badge.style.border = '1px solid rgba(0,132,61,0.25)';
       } else {
-        badge.textContent = ar?'⚠️ لم يتم الإعداد — أضف مفتاح API في الأسفل':'⚠️ Not configured — add an API key below';
+        badge.textContent = cfg.provider === 'local'
+          ? (ar ? '⚠️ أوقف النموذج المحلي أو تحقق من الرابط والموديل' : '⚠️ Configure local model endpoint and model')
+          : (ar?'⚠️ لم يتم الإعداد — أضف مفتاح API في الأسفل':'⚠️ Not configured — add an API key below');
         badge.style.background = 'rgba(229,72,77,0.08)';
         badge.style.color = '#e5484d';
         badge.style.border = '1px solid rgba(229,72,77,0.2)';
@@ -1719,6 +1790,7 @@ const App = {
       <div class="qa-grid mb-24">
         ${[
           {icon:'📋', ar:'إنشاء مقايسة جديدة', en:'Create New BOQ', subAr:'BOQ Builder كامل', subEn:'Full BOQ Builder', page:'boq'},
+          {icon:'📈', ar:'مركز الربحية والتنفيذ', en:'Profitability & Delivery', subAr:'تكلفة فعلية، التزامات، وربح متوقع', subEn:'Actual cost, commitments & forecast profit', page:'profitability'},
           {icon:'🚨', ar:'منشئ مقايسات الطوارئ (SAP)', en:'Emergency BOQ Builder (SAP)', subAr:'حساب المقايسات الطارئة بنسبة 145% في نظام الساب', subEn:'SAP emergency BOQ calculation at 145%', page:'emergency_boq'},
           {icon:'🤖', ar:'الذكاء الاصطناعي', en:'AI Hub', subAr:'تحليل ملفات PDF ومساعد Gemini — إجابات فورية ومقايسات ذكية', subEn:'PDF analysis + Gemini assistant — instant Q&A & smart BOQs', page:'ai'},
           {icon:'🔍', ar:'بحث عن بند', en:'Search Item', subAr:'بالرمز أو الوصف', subEn:'By code or description', page:'search'},
@@ -3541,7 +3613,7 @@ const App = {
         <td class="td-desc"><div class="td-desc-ar">${esc(p?.arDesc||'—')}</div><div class="td-desc-en">${esc(p?.enDesc||'')}</div></td>
         <td><span class="uom-tag">${p?.uom||''}</span></td>
         <td><input class="qty-cell-input" type="number" id="boq-qty-${idx}" value="${itm.qty}" min="0.01" step="0.01" oninput="App.updateBOQQty(${idx},this.value)"></td>
-        <td><input class="qty-cell-input target-cell-input" type="number" id="boq-target-${idx}" value="${fmtNum(tot)}" min="0" step="0.01" oninput="App.updateBOQTargetTotal(${idx},this.value)" style="width:104px;"></td>
+        <td><input class="qty-cell-input target-cell-input" type="number" id="boq-target-${idx}" value="${tot}" min="0" step="0.01" oninput="App.updateBOQTargetTotal(${idx},this.value)" style="width:104px;"></td>
         <td class="td-price">${fmtNum(up)}</td>
         <td class="td-total" id="boq-tot-${idx}">${fmtNum(tot)}</td>
         <td><input class="form-control" style="width:110px;font-size:11px;padding:4px 8px;" value="${esc(itm.note||'')}" placeholder="${ar?'ملاحظة':'Note'}" onchange="App.state.boq.items[${idx}].note=this.value"></td>
@@ -3593,7 +3665,7 @@ const App = {
     if (totEl) totEl.textContent = fmtNum(tot);
     // avoid feedback loop: only sync target field when it isn't the active element
     const targetEl = document.getElementById(`boq-target-${idx}`);
-    if (targetEl && document.activeElement !== targetEl) targetEl.value = fmtNum(tot);
+    if (targetEl && document.activeElement !== targetEl) targetEl.value = String(tot);
   },
 
   removeBOQItem(idx) {
@@ -4445,6 +4517,7 @@ const App = {
     this._searchCat='all';
     this._searchType='all';
     c.innerHTML=`
+      <div id="search-voice-card" class="mb-16"></div>
       <div class="card mb-16"><div class="card-body">
         <div class="search-wrap mb-12">
           <span class="search-icon">🔍</span>
@@ -4461,6 +4534,7 @@ const App = {
       </div></div>
       <div id="search-results"></div>
     `;
+    VoiceAssistant.renderVoiceCard('search-voice-card', 'search');
     this._applySearch('');
     document.getElementById('main-search').addEventListener('input',function(){ App._applySearch(this.value); });
   },
@@ -5535,6 +5609,335 @@ const App = {
     `;
   },
 
+  // ────────────────────────────────────────────────
+  // FIELD OPERATIONS — work-order-linked execution and resources
+  // ────────────────────────────────────────────────
+  renderOperations(c) {
+    const ar = this.lang === 'ar';
+    const boqs = (this.state.savedBOQs || []).filter(boq => boq.id);
+    if (!boqs.length) {
+      c.innerHTML = `<div class="card"><div class="empty-state"><div class="empty-icon">🦺</div><h3>${ar ? 'ابدأ بأمر عمل محفوظ' : 'Start with a saved work order'}</h3><p>${ar ? 'سجّل مقايسة أمر العمل أولاً، ثم اربط بها التنفيذ والموارد والفحوصات.' : 'Save a work-order BOQ first, then link field execution, resources and inspections to it.'}</p><br><button class="btn btn-primary" onclick="App.go('boq')">📋 ${ar ? 'فتح منشئ المقايسات' : 'Open BOQ Builder'}</button></div></div>`;
+      return;
+    }
+
+    const savedId = boqs.some(boq => boq.id === this._selectedOpsBOQId) ? this._selectedOpsBOQId : boqs[0].id;
+    this._selectedOpsBOQId = savedId;
+    const boq = boqs.find(item => item.id === savedId);
+    let summary, records, audit;
+    try {
+      summary = ExecutionWorkspace.summary(boq);
+      records = ExecutionWorkspace.list(boq.id);
+      audit = ExecutionWorkspace.audit(boq.id);
+    } catch (error) {
+      c.innerHTML = `<div class="card"><div class="card-body"><div class="alert alert-danger">${ar ? 'تعذر قراءة سجل العمليات؛ لم يتم تغييره.' : 'The operations ledger could not be read; no data was changed.'} ${esc(error.message)}</div><button class="btn btn-outline btn-sm" onclick="App.go('backup')">${ar ? 'فتح النسخ الاحتياطي' : 'Open backup'}</button></div></div>`;
+      return;
+    }
+    const items = (boq.items || []).map(item => {
+      const product = getItemByCode(item.code);
+      return `<option value="${esc(item.code)}">${esc(item.code)} — ${esc(product?.arDesc || item.code)} (${esc(product?.uom || '')})</option>`;
+    }).join('');
+    const money = value => `${fmtNum(value)} ${ar ? 'ر.س' : 'SAR'}`;
+    const number = value => Number(value || 0).toLocaleString(ar ? 'ar-SA' : 'en-US', { maximumFractionDigits: 2 });
+    const types = {
+      execution: ar ? 'تنفيذ يومي' : 'Daily execution',
+      material: ar ? 'حركة مواد' : 'Material movement',
+      labor: ar ? 'عمالة وإنتاجية' : 'Labor & productivity',
+      equipment: ar ? 'تشغيل معدات' : 'Equipment operation',
+      waste: ar ? 'مخلفات ونقل' : 'Waste & logistics',
+      inspection: ar ? 'فحص جودة' : 'Quality inspection'
+    };
+    const materialEvents = {
+      required: ar ? 'احتياج' : 'Required', ordered: ar ? 'طلب/أمر توريد' : 'Ordered',
+      received: ar ? 'استلام' : 'Received', issued: ar ? 'صرف للموقع' : 'Issued to site',
+      consumed: ar ? 'استهلاك' : 'Consumed', returned: ar ? 'مرتجع' : 'Returned',
+      damaged: ar ? 'تالف/هالك' : 'Damaged'
+    };
+    const materialSources = {
+      sec: 'SEC', contractor: ar ? 'المقاول' : 'Contractor',
+      mixed: ar ? 'مختلط' : 'Mixed', recovered: ar ? 'مسترد' : 'Recovered'
+    };
+    const recordsHtml = records.slice(0, 100).map(record => {
+      let detail = '';
+      if (record.kind === 'execution') detail = `${number(record.executedQty)} ${esc(record.unit)}`;
+      else if (record.kind === 'inspection') detail = `${ar ? 'مفحوص' : 'Inspected'} ${number(record.inspectedQty)} • ${ar ? 'مقبول داخلياً' : 'Internally accepted'} ${number(record.acceptedQty)}`;
+      else if (record.kind === 'material') detail = `${esc(record.description)} • ${number(record.qty)} ${esc(record.unit)} • ${esc(materialEvents[record.event])}`;
+      else if (record.kind === 'labor') detail = `${esc(record.crew)} • ${number(record.workers)} ${ar ? 'عامل' : 'workers'} • ${number(record.regularHours + record.overtimeHours)} ${ar ? 'ساعة' : 'hours'}`;
+      else if (record.kind === 'equipment') detail = `${esc(record.asset)} • ${number(record.operatingHours)} ${ar ? 'ساعة تشغيل' : 'operating hours'}`;
+      else detail = `${esc(record.wasteType)} • ${number(record.hauledQty)} / ${number(record.qty)} ${esc(record.unit)} ${ar ? 'منقول' : 'hauled'}`;
+      const cost = record.actualCost ? money(record.actualCost) : '—';
+      return `<tr><td>${esc(record.date)}</td><td>${esc(types[record.kind])}</td><td>${esc(record.itemCode || '—')}</td><td>${detail}</td><td>${cost}</td><td><button class="btn btn-outline btn-sm" onclick="App.archiveOperation('${esc(record.id)}')">${ar ? 'إلغاء مع حفظ الأثر' : 'Void with audit'}</button></td></tr>`;
+    }).join('');
+    const materialRows = Object.values(summary.materials).map(material => `<tr><td>${esc(material.materialCode || '—')}<br>${esc(material.description)}</td><td>${esc(materialSources[material.source])}</td><td>${number(material.required)}</td><td>${number(material.ordered)}</td><td>${number(material.received)}</td><td>${number(material.issued)}</td><td>${number(material.consumed)}</td><td>${number(material.returned)}</td><td>${number(material.damaged)}</td><td>${number(material.balance)} ${esc(material.unit)}</td></tr>`).join('');
+    const historyHtml = audit.slice(-30).reverse().map(entry => `<div class="ops-audit-row"><span>${esc(entry.action === 'created' ? (ar ? 'إنشاء سجل' : 'Record created') : (ar ? 'إلغاء مع حفظ الأثر' : 'Voided with audit'))}</span><span>${esc(entry.actor)}</span><time>${esc(new Date(entry.at).toLocaleString(ar ? 'ar-SA' : 'en-US'))}</time></div>`).join('');
+    const itemRows = Object.entries(summary.byItem).map(([code, value]) => {
+      const boqItem = boq.items.find(item => String(item.code) === code);
+      const unit = getItemByCode(code)?.uom || '';
+      const remaining = Math.max(0, Number(boqItem?.qty || 0) - value.executedQty);
+      const overrun = value.executedQty > Number(boqItem?.qty || 0);
+      const acceptanceMismatch = value.acceptedQty > value.executedQty;
+      return `<tr><td>${esc(code)}</td><td>${number(boqItem?.qty)} ${esc(unit)}</td><td>${number(value.executedQty)} ${esc(unit)}</td><td>${number(value.acceptedQty)} ${esc(unit)}</td><td>${number(remaining)} ${esc(unit)}</td><td>${acceptanceMismatch ? `<span class="badge badge-critical">${ar ? 'المقبول يتجاوز المنفذ — راجع' : 'Accepted exceeds executed — review'}</span>` : overrun ? `<span class="badge badge-warning">${ar ? 'تجاوز كمية المقايسة' : 'BOQ quantity exceeded'}</span>` : `<span class="badge badge-ok">${ar ? 'ضمن الكمية' : 'Within BOQ'}</span>`}</td></tr>`;
+    }).join('');
+    const today = new Date().toISOString().slice(0, 10);
+    const field = (label, name, type, options) => {
+      const config = options || {};
+      if (config.select) {
+        return `<label class="ops-field">${label}<select class="form-control" name="${name}"${config.required ? ' data-required="true"' : ''}>${config.select}</select></label>`;
+      }
+      return `<label class="ops-field">${label}<input class="form-control" type="${type || 'text'}" name="${name}"${config.required ? ' data-required="true"' : ''}${config.min != null ? ` min="${config.min}"` : ''}${config.step ? ` step="${config.step}"` : ''}${config.maxLength ? ` maxlength="${config.maxLength}"` : ''}${config.placeholder ? ` placeholder="${config.placeholder}"` : ''}${config.accept ? ` accept="${config.accept}"` : ''}></label>`;
+    };
+    const req = ar ? ' مطلوب' : ' required';
+    const unitField = field(ar ? 'الوحدة' : 'Unit', 'unit', 'text', { required: true, maxLength: 30 });
+    const outputUnitField = field(ar ? 'وحدة الإنتاج (إن أدخلت كمية)' : 'Output unit (if quantity entered)', 'unit', 'text', { maxLength: 30 });
+    c.innerHTML = `
+      <div class="ops-page">
+        <div class="ops-intro card">
+          <div class="ops-intro-copy"><span class="ops-eyebrow">WORK ORDER • FIELD CONTROL</span><h2>${ar ? 'سجل التنفيذ والموارد' : 'Execution & Resource Ledger'}</h2><p>${ar ? 'اربط الكميات اليومية والمواد والعمالة والمعدات والمخلفات والفحوصات بمقايسة أمر العمل.' : 'Link daily quantities, materials, labor, equipment, waste and inspections to a work-order BOQ.'}</p></div>
+          <label class="ops-field ops-work-order">${ar ? 'أمر العمل / المقايسة' : 'Work order / BOQ'}<select id="ops-boq-select" class="form-control" onchange="App.selectOperationsBOQ(this.value)">${boqs.map(item => `<option value="${esc(item.id)}"${item.id === boq.id ? ' selected' : ''}>${esc(item.meta?.wo || item.meta?.project || item.draftNo || item.id)} — ${esc(item.meta?.project || (ar ? 'مشروع بدون اسم' : 'Unnamed project'))}</option>`).join('')}</select></label>
+          <div class="ops-local-badge"><span aria-hidden="true">●</span> ${ar ? 'محفوظ محلياً على هذا المتصفح' : 'Stored locally in this browser'}</div>
+        </div>
+        <div class="ops-boundary-note">${ar ? 'تنبيه: السجل محلي وغير متزامن بين الأجهزة. القبول هنا فحص داخلي وليس اعتماداً من SEC. لا تُحسب تكلفة فعلية دون مبلغ موثق ومرجع مستند.' : 'Notice: records are local and are not synchronized across devices. Acceptance here is an internal inspection, not SEC approval. Actual cost requires an evidenced amount and document reference.'}</div>
+        <div class="ops-kpis">
+          <div class="ops-kpi"><span>${ar ? 'سجلات أمر العمل' : 'Work-order records'}</span><strong>${number(summary.recordCount)}</strong></div>
+          <div class="ops-kpi"><span>${ar ? 'كميات منفذة' : 'Executed quantity'}</span><strong>${number(summary.executedQty)}</strong><small>${number(summary.executionCount)} ${ar ? 'يوميات' : 'daily logs'}</small></div>
+          <div class="ops-kpi"><span>${ar ? 'كمية مقبولة داخلياً' : 'Internally accepted'}</span><strong>${number(summary.acceptedQty)}</strong><small>${number(summary.inspectedQty)} ${ar ? 'مفحوصة' : 'inspected'}</small></div>
+          <div class="ops-kpi"><span>${ar ? 'تكلفة فعلية موثقة، دون الضريبة' : 'Evidenced actual cost, ex VAT'}</span><strong>${money(summary.totalRecordedCost)}</strong><small>${ar ? 'لا تشمل التقديرات' : 'Excludes estimates'}</small></div>
+        </div>
+        <div class="ops-grid">
+          <section class="card ops-entry-card">
+            <div class="card-head"><span>✍️</span><span class="card-title">${ar ? 'إضافة سجل ميداني' : 'Add a field record'}</span></div>
+            <form id="ops-record-form" class="card-body ops-form" onsubmit="App.saveOperation(event)">
+              <div class="ops-form-grid">
+                ${field(ar ? 'نوع السجل' : 'Record type', 'kind', 'text', { required: true, select: Object.entries(types).map(([key, label]) => `<option value="${key}">${label}</option>`).join('') })}
+                ${field(ar ? 'التاريخ' : 'Date', 'date', 'date', { required: true })}
+                ${field(ar ? 'بند المقايسة (اختياري)' : 'BOQ item (optional)', 'itemCode', 'text', { select: `<option value="">${ar ? 'عام — دون ربط ببند' : 'General — no item link'}</option>${items}` })}
+                ${field(ar ? 'الموقع' : 'Site', 'site', 'text', { maxLength: 160 })}
+              </div>
+              <div class="ops-type-fields" data-kind="execution">
+                <h3>${ar ? 'كمية التنفيذ' : 'Execution quantity'}</h3><div class="ops-form-grid">
+                  ${field(ar ? `الكمية المنفذة${req}` : 'Executed quantity', 'executedQty', 'number', { required: true, min: 0.01, step: '0.01' })}
+                  ${unitField}
+                </div>
+              </div>
+              <div class="ops-type-fields" data-kind="inspection" hidden>
+                <h3>${ar ? 'فحص داخلي — لا يمثل قبول SEC' : 'Internal inspection — not SEC acceptance'}</h3><div class="ops-form-grid">
+                  ${field(ar ? 'نتيجة الفحص' : 'Inspection result', 'result', 'text', { required: true, select: `<option value="pending">${ar ? 'قيد الفحص' : 'Pending'}</option><option value="accepted">${ar ? 'مقبول داخلياً' : 'Internally accepted'}</option><option value="partial">${ar ? 'قبول جزئي' : 'Partially accepted'}</option><option value="rejected">${ar ? 'مرفوض' : 'Rejected'}</option><option value="rework">${ar ? 'إعادة عمل' : 'Rework'}</option>` })}
+                  ${field(ar ? 'الكمية المفحوصة' : 'Inspected quantity', 'inspectedQty', 'number', { required: true, min: 0.01, step: '0.01' })}
+                  ${field(ar ? 'مقبولة داخلياً' : 'Internally accepted', 'acceptedQty', 'number', { required: true, min: 0, step: '0.01' })}
+                  ${field(ar ? 'مرفوضة' : 'Rejected', 'rejectedQty', 'number', { required: true, min: 0, step: '0.01' })}
+                  ${field(ar ? 'إعادة عمل' : 'Rework', 'reworkQty', 'number', { required: true, min: 0, step: '0.01' })}
+                  ${field(ar ? 'تاريخ إعادة الفحص' : 'Reinspection date', 'reinspectDate', 'date')}
+                  ${field(ar ? 'مرجع محضر/صورة الفحص' : 'Inspection evidence reference', 'evidenceRef', 'text', { maxLength: 160 })}
+                  ${field(ar ? 'نتيجة / ملاحظة الفحص' : 'Inspection findings', 'findings', 'text', { maxLength: 1000 })}
+                  ${field(ar ? 'الإجراء التصحيحي' : 'Corrective action', 'correctiveAction', 'text', { maxLength: 1000 })}
+                </div>
+              </div>
+              <div class="ops-type-fields" data-kind="material" hidden>
+                <h3>${ar ? 'حركة المواد ومصدرها' : 'Material movement & source'}</h3><div class="ops-form-grid">
+                  ${field(ar ? 'الحركة' : 'Movement', 'event', 'text', { required: true, select: [['required','احتياج'],['ordered','طلب/أمر توريد'],['received','استلام'],['issued','صرف للموقع'],['consumed','استهلاك'],['returned','مرتجع للمخزن/المورد'],['damaged','تالف/هالك']].map(([value,label]) => `<option value="${value}">${ar ? label : ({required:'Required',ordered:'Ordered',received:'Received',issued:'Issued to site',consumed:'Consumed',returned:'Returned',damaged:'Damaged'}[value])}</option>`).join('') })}
+                  ${field(ar ? 'مصدر المادة' : 'Material source', 'source', 'text', { required: true, select: `<option value="sec">SEC</option><option value="contractor">${ar ? 'المقاول' : 'Contractor'}</option><option value="mixed">${ar ? 'مختلط' : 'Mixed'}</option><option value="recovered">${ar ? 'مسترد' : 'Recovered'}</option>` })}
+                  ${field(ar ? 'كود المادة' : 'Material code', 'materialCode', 'text', { maxLength: 80 })}
+                  ${field(ar ? 'وصف المادة' : 'Material description', 'description', 'text', { required: true, maxLength: 180 })}
+                  ${field(ar ? 'الكمية' : 'Quantity', 'qty', 'number', { required: true, min: 0.01, step: '0.01' })}
+                  ${unitField}
+                  ${field(ar ? 'المورد' : 'Supplier', 'supplier', 'text', { maxLength: 160 })}
+                  ${field(ar ? 'طلب/أمر التوريد' : 'Request / purchase order', 'orderRef', 'text', { maxLength: 120 })}
+                  ${field(ar ? 'المخزن/الموقع' : 'Store / location', 'storageLocation', 'text', { maxLength: 160 })}
+                  ${field(ar ? 'تكلفة/رصيد فعلي دون الضريبة (SAR)' : 'Actual cost/credit ex VAT (SAR)', 'actualCost', 'number', { min: 0, step: '0.01' })}
+                  ${field(ar ? 'مرجع فاتورة/مستند مؤيد' : 'Invoice / evidence reference', 'evidenceRef', 'text', { maxLength: 160 })}
+                </div>
+              </div>
+              <div class="ops-type-fields" data-kind="labor" hidden>
+                <h3>${ar ? 'الطاقم والإنتاجية' : 'Crew & productivity'}</h3><div class="ops-form-grid">
+                  ${field(ar ? 'رمز/اسم الطاقم' : 'Crew name / code', 'crew', 'text', { required: true, maxLength: 120 })}
+                  ${field(ar ? 'التخصص' : 'Trade', 'trade', 'text', { maxLength: 120 })}
+                  ${field(ar ? 'عدد العمال' : 'Workers', 'workers', 'number', { required: true, min: 1, step: '1' })}
+                  ${field(ar ? 'ساعات عادية' : 'Regular hours', 'regularHours', 'number', { required: true, min: 0, step: '0.25' })}
+                  ${field(ar ? 'ساعات إضافية' : 'Overtime hours', 'overtimeHours', 'number', { required: true, min: 0, step: '0.25' })}
+                  ${field(ar ? 'الإنتاج' : 'Output quantity', 'outputQty', 'number', { min: 0, step: '0.01' })}
+                  ${outputUnitField}
+                  ${field(ar ? 'تكلفة فعلية دون الضريبة (SAR)' : 'Actual cost ex VAT (SAR)', 'actualCost', 'number', { min: 0, step: '0.01' })}
+                  ${field(ar ? 'مرجع مسير/مستند تكلفة' : 'Cost record / evidence reference', 'evidenceRef', 'text', { maxLength: 160 })}
+                </div>
+              </div>
+              <div class="ops-type-fields" data-kind="equipment" hidden>
+                <h3>${ar ? 'تشغيل المعدات والتوقف' : 'Equipment operation & downtime'}</h3><div class="ops-form-grid">
+                  ${field(ar ? 'المعدة / رقمها' : 'Equipment / asset ID', 'asset', 'text', { required: true, maxLength: 120 })}
+                  ${field(ar ? 'الملكية' : 'Ownership', 'ownership', 'text', { required: true, select: `<option value="owned">${ar ? 'مملوكة' : 'Owned'}</option><option value="rented">${ar ? 'مستأجرة' : 'Rented'}</option>` })}
+                  ${field(ar ? 'ساعات التشغيل' : 'Operating hours', 'operatingHours', 'number', { required: true, min: 0, step: '0.25' })}
+                  ${field(ar ? 'ساعات التوقف' : 'Downtime hours', 'downtimeHours', 'number', { required: true, min: 0, step: '0.25' })}
+                  ${field(ar ? 'الوقود الفعلي (SAR)' : 'Actual fuel (SAR)', 'fuelCost', 'number', { min: 0, step: '0.01' })}
+                  ${field(ar ? 'الصيانة الفعلية (SAR)' : 'Actual maintenance (SAR)', 'maintenanceCost', 'number', { min: 0, step: '0.01' })}
+                  ${field(ar ? 'الإيجار الفعلي (SAR)' : 'Actual rental (SAR)', 'hireCost', 'number', { min: 0, step: '0.01' })}
+                  ${field(ar ? 'النقل الفعلي (SAR)' : 'Actual transport (SAR)', 'transportCost', 'number', { min: 0, step: '0.01' })}
+                  ${field(ar ? 'الإنتاج' : 'Output quantity', 'outputQty', 'number', { min: 0, step: '0.01' })}
+                  ${outputUnitField}
+                  ${field(ar ? 'سبب التوقف' : 'Downtime reason', 'breakdownReason', 'text', { maxLength: 500 })}
+                  ${field(ar ? 'مرجع فاتورة/سجل تكلفة' : 'Invoice / cost record reference', 'evidenceRef', 'text', { maxLength: 160 })}
+                </div>
+              </div>
+              <div class="ops-type-fields" data-kind="waste" hidden>
+                <h3>${ar ? 'المخلفات والترحيل' : 'Waste & hauling'}</h3><div class="ops-form-grid">
+                  ${field(ar ? 'نوع المخلفات' : 'Waste type', 'wasteType', 'text', { required: true, maxLength: 120 })}
+                  ${field(ar ? 'كمية ناتجة' : 'Generated quantity', 'qty', 'number', { required: true, min: 0.01, step: '0.01' })}
+                  ${field(ar ? 'كمية منقولة' : 'Hauled quantity', 'hauledQty', 'number', { required: true, min: 0, step: '0.01' })}
+                  ${unitField}
+                  ${field(ar ? 'عدد الرحلات' : 'Trips', 'trips', 'number', { required: true, min: 0, step: '1' })}
+                  ${field(ar ? 'المركبة' : 'Vehicle', 'vehicle', 'text', { maxLength: 120 })}
+                  ${field(ar ? 'السعة الاسمية (اختياري)' : 'Rated capacity (optional)', 'capacity', 'number', { min: 0, step: '0.01' })}
+                  ${field(ar ? 'موقع التخلص' : 'Disposal destination', 'destination', 'text', { maxLength: 180 })}
+                  ${field(ar ? 'تكلفة النقل الفعلية (SAR)' : 'Actual hauling cost (SAR)', 'transportCost', 'number', { min: 0, step: '0.01' })}
+                  ${field(ar ? 'تكلفة التخلص الفعلية (SAR)' : 'Actual disposal cost (SAR)', 'disposalCost', 'number', { min: 0, step: '0.01' })}
+                  ${field(ar ? 'مرجع فاتورة/مستند النقل' : 'Hauling / disposal evidence reference', 'evidenceRef', 'text', { maxLength: 160 })}
+                </div>
+              </div>
+              <label class="ops-field">${ar ? 'ملاحظات السجل' : 'Record notes'}<textarea class="form-control" name="notes" rows="2" maxlength="1000"></textarea></label>
+              <div class="ops-form-actions"><button class="btn btn-primary" type="submit">💾 ${ar ? 'حفظ السجل المرتبط بأمر العمل' : 'Save work-order record'}</button><span>${ar ? 'التكلفة المدخلة فعلية فقط، دون الضريبة، ولا بد من مرجع مستند.' : 'Enter actual cost only, ex VAT, with an evidence reference.'}</span></div>
+            </form>
+          </section>
+          <section class="card ops-resource-summary">
+            <div class="card-head"><span>📦</span><span class="card-title">${ar ? 'مطابقة المواد والموارد' : 'Materials & resource reconciliation'}</span></div>
+            <div class="ops-summary-lines">
+              <div><span>${ar ? 'تكلفة المواد الموثقة' : 'Evidenced materials'}</span><b>${money(summary.costs.material)}</b></div>
+              <div><span>${ar ? 'تكلفة العمالة الموثقة' : 'Evidenced labor'}</span><b>${money(summary.costs.labor)}</b></div>
+              <div><span>${ar ? 'تكلفة المعدات الموثقة' : 'Evidenced equipment'}</span><b>${money(summary.costs.equipment)}</b></div>
+              <div><span>${ar ? 'النقل والتخلص الموثق' : 'Evidenced hauling/disposal'}</span><b>${money(summary.costs.logistics)}</b></div>
+              <div><span>${ar ? 'مخلفات لم تسجل منقولاً' : 'Waste not recorded as hauled'}</span><b>${number(summary.unhauledWasteQty)}</b></div>
+            </div>
+            ${(summary.uncostedMaterialReceipts || summary.uncostedLaborLogs || summary.uncostedEquipmentLogs) ? `<div class="ops-incomplete">${ar ? `تكلفة غير مكتملة: ${summary.uncostedMaterialReceipts} استلام مادة للمقاول بلا تكلفة، و${summary.uncostedLaborLogs} سجل عمالة، و${summary.uncostedEquipmentLogs} سجل معدات بلا تكلفة موثقة. لا نحول الكميات أو الساعات إلى تكلفة تقديرية.` : `Incomplete cost: ${summary.uncostedMaterialReceipts} contractor material receipts and ${summary.uncostedLaborLogs} labor / ${summary.uncostedEquipmentLogs} equipment logs have no evidenced cost. Quantities and hours are not converted to estimates.`}</div>` : ''}
+            <div class="ops-table-wrap"><table class="data-table ops-table"><thead><tr><th>${ar ? 'كود/وصف المادة' : 'Material'}</th><th>${ar ? 'المصدر' : 'Source'}</th><th>${ar ? 'مطلوب' : 'Required'}</th><th>${ar ? 'مطلوب توريده' : 'Ordered'}</th><th>${ar ? 'مستلم' : 'Received'}</th><th>${ar ? 'مصروف' : 'Issued'}</th><th>${ar ? 'مستهلك' : 'Consumed'}</th><th>${ar ? 'مرتجع' : 'Returned'}</th><th>${ar ? 'تالف' : 'Damaged'}</th><th>${ar ? 'الرصيد' : 'Balance'}</th></tr></thead><tbody>${materialRows || `<tr><td colspan="10" class="ops-empty">${ar ? 'لا توجد حركات مواد بعد.' : 'No material movements recorded yet.'}</td></tr>`}</tbody></table></div>
+            <p class="ops-footnote">${ar ? 'مواد SEC لا تتحول إلى تكلفة على المقاول إلا بمبلغ فعلي ومرجع موثق. الرصيد هنا: المستلم − المستهلك − التالف.' : 'SEC-supplied materials are not charged to the contractor unless an evidenced actual amount is recorded. Balance shown: received − consumed − damaged.'}</p>
+          </section>
+        </div>
+        <section class="card ops-item-progress">
+          <div class="card-head"><span>📐</span><span class="card-title">${ar ? 'التنفيذ والفحص مقابل بنود المقايسة' : 'Execution & inspection against BOQ items'}</span></div>
+          <div class="ops-table-wrap"><table class="data-table ops-table"><thead><tr><th>${ar ? 'البند' : 'Item'}</th><th>${ar ? 'كمية المقايسة' : 'BOQ quantity'}</th><th>${ar ? 'منفذ مسجل' : 'Recorded executed'}</th><th>${ar ? 'مقبول داخلياً بعد الفحص' : 'Internally accepted after inspection'}</th><th>${ar ? 'متبقٍ للتنفيذ' : 'Remaining'}</th><th>${ar ? 'مراجعة' : 'Review'}</th></tr></thead><tbody>${itemRows || `<tr><td colspan="6" class="ops-empty">${ar ? 'لم تسجل كميات تنفيذ بعد.' : 'No execution quantities recorded yet.'}</td></tr>`}</tbody></table></div>
+          <p class="ops-footnote">${ar ? 'القبول في هذا السجل داخلي فقط، ولا يؤهل الكمية تلقائياً لمستخلص أو اعتماد من SEC.' : 'Acceptance recorded here is internal only; it does not automatically qualify a quantity for a certificate or SEC approval.'}</p>
+        </section>
+        <section class="card">
+          <div class="card-head"><span>🗓️</span><span class="card-title">${ar ? 'آخر سجلات أمر العمل' : 'Latest work-order records'}</span><span class="ops-record-count">${records.length}</span></div>
+          <div class="ops-table-wrap"><table class="data-table ops-table"><thead><tr><th>${ar ? 'التاريخ' : 'Date'}</th><th>${ar ? 'السجل' : 'Record'}</th><th>${ar ? 'البند' : 'Item'}</th><th>${ar ? 'البيانات' : 'Details'}</th><th>${ar ? 'تكلفة موثقة' : 'Evidenced cost'}</th><th></th></tr></thead><tbody>${recordsHtml || `<tr><td colspan="6" class="ops-empty">${ar ? 'لا توجد سجلات. ابدأ بإضافة يومية تنفيذ أو حركة موارد.' : 'No records. Start with a daily execution or resource entry.'}</td></tr>`}</tbody></table></div>
+          ${records.length > 100 ? `<p class="ops-footnote">${ar ? 'تُعرض أحدث 100 حركة فقط.' : 'Showing the latest 100 records.'}</p>` : ''}
+        </section>
+        <details class="card ops-audit">
+          <summary>${ar ? 'سجل التدقيق المحلي' : 'Local audit trail'} <span>${audit.length}</span></summary>
+          <div class="ops-audit-list">${historyHtml || `<div class="ops-empty">${ar ? 'لا توجد تغييرات مسجلة.' : 'No audit events.'}</div>`}</div>
+        </details>
+      </div>`;
+    const dateInput = c.querySelector('#ops-record-form [name="date"]');
+    if (dateInput) dateInput.value = today;
+    const kindSelect = c.querySelector('#ops-record-form [name="kind"]');
+    if (kindSelect) {
+      kindSelect.addEventListener('change', () => this.switchOperationsForm(kindSelect.value));
+      this.switchOperationsForm(kindSelect.value);
+    }
+    const itemSelect = c.querySelector('#ops-record-form [name="itemCode"]');
+    if (itemSelect) itemSelect.addEventListener('change', () => {
+      const unitInput = c.querySelector('.ops-type-fields:not([hidden]) [name="unit"]');
+      const product = itemSelect.value ? getItemByCode(itemSelect.value) : null;
+      if (unitInput && product) unitInput.value = product.uom || '';
+    });
+  },
+
+  switchOperationsForm(kind) {
+    document.querySelectorAll('#ops-record-form .ops-type-fields').forEach(section => {
+      const active = section.dataset.kind === kind;
+      section.hidden = !active;
+      section.querySelectorAll('input,select,textarea').forEach(input => {
+        input.disabled = !active;
+        input.required = active && input.dataset.required === 'true';
+      });
+    });
+  },
+
+  selectOperationsBOQ(id) {
+    this._selectedOpsBOQId = id;
+    this.renderOperations(this.getArea());
+  },
+
+  saveOperation(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const boq = (this.state.savedBOQs || []).find(item => item.id === this._selectedOpsBOQId);
+    if (!boq) {
+      toast(this.lang === 'ar' ? 'اختر مقايسة محفوظة أولاً' : 'Select a saved BOQ first', 'warning');
+      return;
+    }
+    try {
+      const input = Object.fromEntries(new FormData(form).entries());
+      const record = ExecutionWorkspace.create(boq, input, Auth.current()?.name || 'local-user');
+      toast(this.lang === 'ar' ? 'تم حفظ سجل أمر العمل محلياً' : 'Work-order record saved locally', 'success');
+      this.renderOperations(this.getArea());
+      const kindSelect = document.getElementById('ops-record-form')?.elements.kind;
+      if (kindSelect) kindSelect.value = record.kind;
+      this.switchOperationsForm(record.kind);
+    } catch (error) {
+      toast((this.lang === 'ar' ? 'تعذر حفظ السجل: ' : 'Could not save record: ') + error.message, 'error');
+    }
+  },
+
+  archiveOperation(id) {
+    const ar = this.lang === 'ar';
+    const reason = prompt(ar ? 'اكتب سبب إلغاء هذا السجل. سيبقى محفوظاً في سجل التدقيق:' : 'Enter why this record is being voided. It will remain in the audit trail:');
+    if (reason == null) return;
+    try {
+      ExecutionWorkspace.archive(this._selectedOpsBOQId, id, reason, Auth.current()?.name || 'local-user');
+      toast(ar ? 'أُلغي السجل مع الاحتفاظ بأثره' : 'Record voided; audit history retained', 'info');
+      this.renderOperations(this.getArea());
+    } catch (error) {
+      toast((ar ? 'تعذر إلغاء السجل: ' : 'Could not void record: ') + error.message, 'error');
+    }
+  },
+
+  // ────────────────────────────────────────────────
+  // PROFITABILITY & DELIVERY CONTROL — cost, commitment and forecast at completion
+  // ────────────────────────────────────────────────
+  renderProfitability(c) {
+    const ar=this.lang==='ar';
+    const boq=this.state.boq;
+    const ready=boq && boq.items && boq.items.length;
+    if(!ready){
+      c.innerHTML=`<div class="card"><div class="empty-state"><div class="empty-icon">📈</div><h3>${ar?'يلزم فتح أو إنشاء مقايسة أولاً':'Open or create a BOQ first'}</h3><p>${ar?'مركز الربحية يحول بنود المقايسة إلى ميزانية تنفيذية قابلة للمتابعة.':'The profitability center turns BOQ items into a controllable execution budget.'}</p><br><button class="btn btn-primary" onclick="App.go('boq')">📋 ${ar?'فتح منشئ المقايسات':'Open BOQ Builder'}</button></div></div>`;
+      return;
+    }
+    const p=ProjectProfitability.get(boq), m=ProjectProfitability.metrics(p,boq), alerts=ProjectProfitability.alerts(p,boq);
+    const sar=ar?' ر.س':' SAR'; const money=x=>fmtNum(x)+sar;
+    const tone=m.margin<5?'var(--accent-red)':m.margin<10?'var(--sec-gold)':'var(--sec-primary)';
+    const fields=[['material',ar?'المواد والتوريد':'Materials & supply','📦'],['labor',ar?'العمالة والإنتاجية':'Labour & productivity','👷'],['equipment',ar?'المعدات والمحروقات':'Equipment & fuel','🚜'],['subcontract',ar?'المقاولون الباطن':'Subcontractors','🤝'],['indirect',ar?'المصاريف غير المباشرة':'Indirect cost','🏢']];
+    const val=(group,key)=>Math.round((p[group]||{})[key]||0);
+    c.innerHTML=`
+      <div class="card mb-16" style="border-color:rgba(14,116,144,.34);background:linear-gradient(115deg,rgba(7,48,78,.95),rgba(10,85,103,.82));color:#fff;overflow:hidden;">
+        <div class="card-body" style="padding:22px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;">
+          <div style="font-size:36px;width:58px;height:58px;border-radius:14px;background:rgba(255,255,255,.12);display:grid;place-items:center;">📈</div>
+          <div style="flex:1;min-width:240px;"><div style="font-size:11px;font-weight:800;letter-spacing:1.2px;color:#8ee4e7;">PROJECT CONTROL / EAC</div><div style="font-size:20px;font-weight:900;margin-top:4px;">${esc(p.name)}</div><div style="font-size:12px;color:#d8f2f2;margin-top:4px;">${ar?'ربط العقد بالتكلفة الفعلية والالتزامات وتوقع الربح عند الإكمال':'Contract-to-cost link: actuals, commitments and forecast profit at completion'}</div></div>
+          <div style="min-width:160px;border-${ar?'right':'left'}:1px solid rgba(255,255,255,.18);padding-${ar?'right':'left'}:18px;"><div style="font-size:10px;color:#b9e5e6;">${ar?'هامش الربح المتوقع':'FORECAST MARGIN'}</div><div style="font-size:28px;font-weight:900;color:${m.margin<5?'#ff9cae':m.margin<10?'#fde68a':'#9ff3c5'};">${m.margin.toFixed(1)}%</div></div>
+        </div>
+      </div>
+      <div class="grid-4 mb-16">
+        ${[[ar?'قيمة العقد قبل الضريبة':'Contract value',m.contract,'💼'],[ar?'تكلفة الإكمال المتوقعة (EAC)':'Forecast final cost',m.eac,'🎯'],[ar?'الربح المتوقع':'Forecast profit',m.forecastProfit,'💰'],[ar?'الانحراف عن الميزانية':'Budget variance',m.variance,'↕️']].map((x,i)=>`<div class="stat-card" style="text-align:${ar?'right':'left'};border-top:3px solid ${i===2?tone:'var(--se-blue)'};"><div style="font-size:10px;color:var(--text-muted);font-weight:800;">${x[2]} ${x[0]}</div><div class="stat-val" style="font-size:20px;color:${i===2?tone:'var(--text-h)'};margin-top:7px;">${money(x[1])}</div></div>`).join('')}
+      </div>
+      <div class="grid-2 mb-16">
+        <div class="card"><div class="card-head"><span>🧭</span><span class="card-title">${ar?'الإنجاز والتنبؤ المالي':'Progress & financial forecast'}</span></div><div class="card-body">
+          <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:800;margin-bottom:7px;"><span>${ar?'نسبة الإنجاز الفعلي':'Actual progress'}</span><span style="color:var(--sec-primary)">${m.progress.toFixed(0)}%</span></div>
+          <input class="form-control" type="range" min="0" max="100" value="${m.progress}" oninput="App.updateProfitability('progress','value',this.value)" style="padding:0;accent-color:var(--sec-primary);">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px;">${[[ar?'القيمة المكتسبة':'Earned value',m.earned],[ar?'تكلفة حتى اليوم + الالتزامات':'Cost + commitments',m.costToDate],[ar?'الميزانية المعتمدة':'Baseline budget',m.planned],[ar?'تكلفة متبقية مخططة':'Planned remaining',m.remainingPlan]].map(x=>`<div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:9px;padding:9px;"><div style="font-size:10px;color:var(--text-muted)">${x[0]}</div><div style="font-weight:900;font-size:14px;margin-top:3px;">${money(x[1])}</div></div>`).join('')}</div>
+        </div></div>
+        <div class="card"><div class="card-head"><span>🤖</span><span class="card-title">${ar?'وكلاء الرقابة المجانية':'Free control agents'}</span><span class="badge badge-info">${ar?'قواعد محلية':'Local rules'}</span></div><div class="card-body" style="display:flex;flex-direction:column;gap:8px;">${alerts.map(a=>`<div style="padding:10px 11px;border-radius:9px;border:1px solid ${a.level==='critical'?'rgba(255,77,106,.34)':a.level==='warning'?'var(--border-gold)':'var(--border-sec)'};background:${a.level==='critical'?'rgba(255,77,106,.06)':a.level==='warning'?'rgba(200,168,75,.06)':'var(--sec-primary-faint)'};"><div style="font-size:10px;font-weight:900;color:${a.level==='critical'?'var(--accent-red)':a.level==='warning'?'var(--sec-gold)':'var(--sec-primary)'};">${a.level==='critical'?'⛔':a.level==='warning'?'⚠️':'✓'} ${esc(a.agent)}</div><div style="font-size:11px;color:var(--text-body);margin-top:3px;line-height:1.65;">${esc(a.text)}</div></div>`).join('')}</div></div>
+      </div>
+      <div class="card"><div class="card-head"><span>🧾</span><span class="card-title">${ar?'سجل الميزانية والتكلفة':'Budget, actual cost & commitments register'}</span><button class="btn btn-outline btn-sm" style="margin-${ar?'right':'left'}:auto" onclick="App.resetProfitability()">↺ ${ar?'إعادة خط الأساس':'Reset baseline'}</button></div><div class="card-body ops-footnote">${ar?'تضاف التكاليف الفعلية الموثقة من سجل التنفيذ إلى المدخلات اليدوية. لا تكرر إدخال المصروف نفسه في الموضعين.':'Evidenced costs from field operations are added to manual actuals. Do not enter the same expense in both places.'}</div><div class="tbl-wrap"><table class="data-table"><thead><tr><th>${ar?'الفئة':'Cost category'}</th><th>${ar?'الميزانية المخططة':'Baseline budget'}</th><th>${ar?'فعلي يدوي + سجل التنفيذ':'Manual actual + operations ledger'}</th><th>${ar?'التزامات / أوامر شراء':'Committed / PO'}</th><th>${ar?'التعرض الكلي':'Total exposure'}</th><th>${ar?'الحالة':'Status'}</th></tr></thead><tbody>${fields.map(f=>{const execution=Number(m.executionCosts[f[0]]||0);const actual=val('actual',f[0])+execution;const exposure=actual+val('committed',f[0]);const pct=val('planned',f[0])?exposure/val('planned',f[0]):0;return `<tr><td><b>${f[2]} ${f[1]}</b></td><td><input class="form-control" type="number" min="0" value="${val('planned',f[0])}" onchange="App.updateProfitability('planned','${f[0]}',this.value)"></td><td><input class="form-control" type="number" min="0" value="${val('actual',f[0])}" onchange="App.updateProfitability('actual','${f[0]}',this.value)">${execution?`<small class="ops-cost-source">+ ${money(execution)} ${ar?'من سجل التنفيذ':'from field log'}</small>`:''}</td><td><input class="form-control" type="number" min="0" value="${val('committed',f[0])}" onchange="App.updateProfitability('committed','${f[0]}',this.value)"></td><td class="td-total">${money(exposure)}</td><td>${pct>1?'<span class="badge badge-critical">تجاوز</span>':pct>.85?'<span class="badge badge-warning">تنبيه</span>':'<span class="badge badge-ok">ضمن الحد</span>'}</td></tr>`}).join('')}</tbody></table></div><div class="card-body" style="font-size:10.5px;color:var(--text-muted);">${ar?'المعادلة: EAC = المدفوع الفعلي + الالتزامات + التكلفة المتوقعة للمتبقي. الربح المتوقع = قيمة العقد قبل الضريبة − EAC. لا تُعد الضريبة قيمة ربحية.':'Formula: EAC = actual paid + commitments + forecast remaining cost. Forecast profit = pre-VAT contract value − EAC. VAT is excluded from profitability.'}</div></div>`;
+  },
+
+  updateProfitability(section,key,value) {
+    if(!this.state.boq?.items?.length) return;
+    ProjectProfitability.update(this.state.boq,section,key,value);
+    this.renderProfitability(this.getArea());
+  },
+
+  resetProfitability() {
+    if(!this.state.boq?.items?.length) return;
+    if(!confirm(this.lang==='ar'?'سيُعاد احتساب الميزانية التقديرية وتصفير الفعلي والالتزامات. متابعة؟':'This resets baseline, actuals, and commitments. Continue?')) return;
+    ProjectProfitability.reset(this.state.boq); this.renderProfitability(this.getArea());
+  },
+
   sendWA() {
     const subj=document.getElementById('sup-subj')?.value||'';
     const msg=document.getElementById('sup-msg')?.value||'';
@@ -5548,4 +5951,3 @@ document.addEventListener('DOMContentLoaded', ()=> App.init());
 </script>
 </body>
 </html>
-

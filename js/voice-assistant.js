@@ -2,7 +2,7 @@
    العقد الموحد 2026 — المساعد الصوتي (إضافة بنود / تحديث مستخلص)
    Unified Contract 2026 — Voice Assistant
    Uses Web Speech API (webkitSpeechRecognition where available)
-   Languages: Arabic (Saudi ar-SA) / Arabic (Egyptian ar-EG) / English (en-US)
+   Languages: Arabic (generic ar) / English (en-US)
    Professional dictation: full BOQ takeoff + direct codes + quantities
    ================================================================ */
 
@@ -11,6 +11,7 @@ const VoiceAssistant = {
   _listening: false,
   _restartTimer: null,
   LANG_KEY: 'va_lang',
+  SPEAK_KEY: 'va_speak_replies',
 
   // Ready example — steel sub-distribution panel + full cable work (matches AIEngine takeoff)
   EXAMPLE: {
@@ -19,9 +20,8 @@ const VoiceAssistant = {
   },
 
   LANGS: {
-    'ar-SA': { flag: '🇸🇦', labelAr: 'العربية (سعودي)', labelEn: 'Arabic (Saudi)' },
-    'ar-EG': { flag: '🇪🇬', labelAr: 'العربية (مصري)', labelEn: 'Arabic (Egyptian)' },
-    'en-US': { flag: '🇬🇧', labelAr: 'الإنجليزية', labelEn: 'English (US)' }
+    ar: { flag: 'ع', labelAr: 'العربية', labelEn: 'Arabic' },
+    'en-US': { flag: 'EN', labelAr: 'الإنجليزية', labelEn: 'English' }
   },
 
   _supported() {
@@ -32,12 +32,41 @@ const VoiceAssistant = {
     try {
       const saved = localStorage.getItem(this.LANG_KEY);
       if (saved && this.LANGS[saved]) return saved;
+      if (saved === 'ar-SA' || saved === 'ar-EG') {
+        this.setLang('ar');
+        return 'ar';
+      }
     } catch (e) {}
-    return (typeof App !== 'undefined' && App.lang === 'en') ? 'en-US' : 'ar-SA';
+    return (typeof App !== 'undefined' && App.lang === 'en') ? 'en-US' : 'ar';
   },
 
   setLang(lang) {
+    if (!this.LANGS[lang]) throw new Error('Unsupported voice language.');
     try { localStorage.setItem(this.LANG_KEY, lang); } catch (e) {}
+  },
+
+  speak(text, lang, status) {
+    if (!window.speechSynthesis || !window.SpeechSynthesisUtterance || !this.speakReplies()) return false;
+    const utterance = new window.SpeechSynthesisUtterance(String(text || '').slice(0, 900));
+    utterance.lang = lang || this.getLang();
+    utterance.rate = 0.96;
+    utterance.onerror = () => {
+      if (status) status.textContent = (typeof App !== 'undefined' && App.lang === 'ar')
+        ? 'تعذر تشغيل الرد الصوتي على هذا الجهاز'
+        : 'Speech playback is unavailable on this device';
+    };
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+    return true;
+  },
+
+  speakReplies() {
+    try {
+      const saved = localStorage.getItem(this.SPEAK_KEY);
+      return saved == null ? true : saved === 'true';
+    } catch (e) {
+      return true;
+    }
   },
 
   renderVoiceCard(slotId, mode) {
@@ -57,22 +86,39 @@ const VoiceAssistant = {
         <div class="card-head" style="background:linear-gradient(90deg,rgba(0,214,138,0.06),transparent);border-bottom:1px solid var(--border);">
           <span>🎙️</span>
           <span class="card-title">${ar ? 'المساعد الصوتي' : 'Voice Assistant'}</span>
-          <span style="margin-${ar?'right':'left'}:auto;font-size:10.5px;color:var(--text-muted);">${ar ? 'إملاء كامل • اللهجة السعودية والمصرية • أمثلة جاهزة' : 'Full dictation • Saudi/Egyptian dialect • ready examples'}</span>
+          <span style="margin-${ar?'right':'left'}:auto;font-size:10.5px;color:var(--text-muted);">${ar ? 'إملاء البنود • بحث صوتي • رد عربي/إنجليزي' : 'BOQ dictation • voice search • Arabic/English replies'}</span>
         </div>
         <div class="card-body" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
           <button class="btn btn-gold" id="va-mic" style="width:46px;height:46px;border-radius:99px;font-size:19px;padding:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;" ${supported ? '' : 'disabled'} title="${ar ? 'اضغط وتحدث' : 'Click and speak'}">🎙️</button>
           <div style="flex:1;min-width:200px;">
             <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:5px;" id="va-lang-bar">${langBtns}</div>
-            <div id="va-status" style="font-size:11px;color:var(--text-sub);min-height:16px;">${supported ? (ar ? 'جاهز — اختر اللهجة ثم اضغط المايك وتحدث' : 'Ready — pick a language then press the mic and speak') : (ar ? 'المتصفح لا يدعم التعرف الصوتي — استخدم Chrome أو Edge' : 'Speech recognition not supported — use Chrome or Edge')}</div>
+            <div id="va-status" style="font-size:11px;color:var(--text-sub);min-height:16px;">${supported ? (ar ? 'جاهز — اختر اللغة ثم اضغط المايك وتحدث' : 'Ready — choose a language, then press the mic and speak') : (ar ? 'المتصفح لا يدعم التعرف الصوتي — استخدم Chrome أو Edge' : 'Speech recognition not supported — use Chrome or Edge')}</div>
             <div id="va-live" style="font-size:12.5px;font-weight:700;color:var(--text-h);min-height:18px;margin-top:2px;"></div>
           </div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;flex-direction:column;align-items:stretch;">
             <button class="btn btn-outline btn-sm" id="va-example" style="font-size:11px;">⚡ ${ar ? 'مثال جاهز' : 'Run Example'}</button>
             <button class="btn btn-outline btn-sm" id="va-help" style="font-size:11px;">${ar ? 'أمثلة صوتية' : 'Examples'}</button>
+            <button class="btn btn-outline btn-sm" id="va-speak" type="button" style="font-size:11px;">${this.speakReplies() ? (ar ? '🔊 الرد الصوتي مفعّل' : '🔊 Voice replies on') : (ar ? '🔇 الرد الصوتي متوقف' : '🔇 Voice replies off')}</button>
           </div>
         </div>
       </div>
     `;
+
+    const speakButton = slot.querySelector('#va-speak');
+    if (speakButton) {
+      speakButton.disabled = !window.speechSynthesis || !window.SpeechSynthesisUtterance;
+      speakButton.addEventListener('click', () => {
+        const enabled = !this.speakReplies();
+        try { localStorage.setItem(this.SPEAK_KEY, String(enabled)); } catch (error) {
+          toast(ar ? 'تعذر حفظ إعداد الرد الصوتي' : 'Could not save voice reply setting', 'error');
+          return;
+        }
+        speakButton.textContent = enabled
+          ? (ar ? '🔊 الرد الصوتي مفعّل' : '🔊 Voice replies on')
+          : (ar ? '🔇 الرد الصوتي متوقف' : '🔇 Voice replies off');
+        if (!enabled && window.speechSynthesis) window.speechSynthesis.cancel();
+      });
+    }
 
     if (!supported) return;
 
@@ -95,18 +141,21 @@ const VoiceAssistant = {
           b.style.color = on ? 'var(--sec-gold)' : 'var(--text-sub)';
           b.style.fontWeight = on ? '800' : '400';
         });
+        rec.lang = btn.dataset.lang;
         status.textContent = ar
           ? `✓ اللغة: ${this.LANGS[btn.dataset.lang].labelAr} — اضغط المايك`
           : `✓ Language: ${this.LANGS[btn.dataset.lang].labelEn} — press mic`;
-        if (typeof this._recognition !== 'undefined' && this._recognition) {
-          this._recognition.lang = btn.dataset.lang;
-        }
+        if (typeof this._recognition !== 'undefined' && this._recognition) this._recognition.lang = btn.dataset.lang;
       });
     });
 
     const loadExample = () => {
       const l = this.getLang();
       const isEn = l === 'en-US';
+      if (mode === 'search') {
+        this._handle(isEn ? 'find cable' : 'ابحث عن كابل', mode, slot.querySelector('#va-status'), slot.querySelector('#va-live'));
+        return;
+      }
       const ex = (mode === 'cert')
         ? (isEn ? 'item 304010101 pct 50 and item 305020401 pct 100' : 'بند 304010101 نسبة 50 و بند 305020401 نسبة 100')
         : (isEn ? this.EXAMPLE.en : this.EXAMPLE.ar);
@@ -147,7 +196,9 @@ const VoiceAssistant = {
     example.addEventListener('click', loadExample);
 
     help.addEventListener('click', () => {
-      toast(mode === 'cert'
+      toast(mode === 'search'
+        ? (ar ? 'قل: «ابحث عن كابل» أو «ما هو البند 101000001؟»' : 'Say: "find cable" or "what is item 101000001?"')
+        : mode === 'cert'
         ? (ar ? 'مثال: «بند 304010101 نسبة 50» أو «بند 305020401 نسبة 100»' : 'e.g. "item 304010101 pct 50"')
         : (ar ? 'أمثلة: «لوحة توزيع فرعية حديدة» • «حفر مفتوح 20 متر» • «تمديد كيبل 300مم 30 متر» • «2 وصلة 300» • «2 نهاية 300» • «بند 304010201 كمية 5»' : 'e.g. "steel panel", "open excavation 20 m", "lay 300 mm cable 30 m", "2 joints 300", "2 terminations", "item 304010201 qty 5"'), 'info', 7000);
     });
@@ -248,11 +299,45 @@ const VoiceAssistant = {
 
     // Try English-first pattern when English is selected, then Arabic/dual
     const isEn = lang === 'en-US';
-    let norm = normalizeArabic(raw);
+    let norm = normalizeArabic(raw).replace(/[٠-٩]/g, digit => String('٠١٢٣٤٥٦٧٨٩'.indexOf(digit)));
     // For English, also try raw text for English keyword matching
     const normEn = raw.toLowerCase();
 
-    const pick = (r) => (statusEl ? statusEl.textContent = r : null);
+    const pick = (r) => {
+      if (statusEl) statusEl.textContent = r;
+      this.speak(r, lang, statusEl);
+    };
+
+    const questionIntent = mode === 'search' || /(?:ما\s*(?:هو|هي)|اشرح|ابحث|بحث|سعر|كم\s+سعر|اقرأ|اقرا|وصف|what\s+is|find|search|price|identify|tell\s+me|look\s+up)/i.test(`${norm} ${normEn}`);
+    if ((mode === 'boq' || mode === 'search') && questionIntent) {
+      const questionCode = norm.match(/\b(\d{8,9})\b/);
+      let reply;
+      if (questionCode && getItemByCode(questionCode[1])) {
+        const product = getItemByCode(questionCode[1]);
+        const description = isEn ? (product.enDesc || product.arDesc) : product.arDesc;
+        const unit = product.uom || (isEn ? 'unit not listed' : 'الوحدة غير مسجلة');
+        const price = Number(product.newPrice);
+        reply = isEn
+          ? `${product.code}. ${description}. Unit: ${unit}. Local reference price: ${Number.isFinite(price) ? price.toLocaleString('en-US') + ' SAR' : 'not listed'}. Verify the applicable contract revision.`
+          : `البند ${product.code}: ${description}. الوحدة ${unit}. السعر في المرجع المحلي ${Number.isFinite(price) ? price.toLocaleString('ar-SA') + ' ريال' : 'غير مسجل'}. راجع انطباق إصدار العقد.`;
+      } else {
+        const query = raw
+          .replace(/\b\d{8,9}\b/g, ' ')
+          .replace(/(?:ما\s*(?:هو|هي)|اشرح|ابحث|بحث|عن|في|سعر|كم\s+سعر|اقرأ|اقرا|وصف|بند|what\s+is|find|search|price|identify|tell\s+me|look\s+up)/gi, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+        const matches = query && typeof searchItems === 'function' ? searchItems(query).slice(0, 3) : [];
+        reply = matches.length
+          ? matches.map((product, index) => {
+            const description = isEn ? (product.enDesc || product.arDesc) : product.arDesc;
+            const price = Number(product.newPrice);
+            return `${index + 1}. ${product.code}: ${description}, ${product.uom || (isEn ? 'unit not listed' : 'الوحدة غير مسجلة')}, ${isEn ? 'local reference price ' : 'السعر في المرجع المحلي '}${Number.isFinite(price) ? price.toLocaleString(isEn ? 'en-US' : 'ar-SA') + ' SAR' : (isEn ? 'not listed' : 'غير مسجل')}`;
+          }).join('. ')
+          : (isEn ? 'No matching item was found in the local price list. Try the item code or a more specific description.' : 'لم أجد بنداً مطابقاً في قائمة الأسعار المحلية. جرّب رقم البند أو وصفاً أدق.');
+      }
+      pick(reply);
+      return;
+    }
 
     // 1) Direct item code + optional qty/pct
     const codeMatch = norm.match(/\b(\d{9})\b/) || norm.match(/\b(\d{8})\b/);
@@ -289,9 +374,12 @@ const VoiceAssistant = {
       return;
     }
 
-    // 2) Full BOQ dictation via AIEngine smart takeoff
+    // 2) Full BOQ dictation: use context-aware voice parsing before generic AI matching.
     if (typeof AIEngine !== 'undefined') {
-      const tk = AIEngine.smartTakeoff(isEn ? raw : norm);
+      let tk = (mode === 'boq' && typeof AIEngine.voiceTakeoff === 'function')
+        ? AIEngine.voiceTakeoff(isEn ? raw : norm)
+        : { items: [] };
+      if (!tk.items.length) tk = AIEngine.smartTakeoff(isEn ? raw : norm);
       if (tk.items.length) {
         if (mode === 'cert') {
           if (typeof App._certItems === 'undefined') { toast(ar ? 'اختر مقايسة أولاً' : 'Select a BOQ first', 'warning'); return; }
@@ -314,6 +402,13 @@ const VoiceAssistant = {
         App._renderBOQTable();
         App.runDepsCheck();
         pick(`${ar ? '✓ تم حصر' : '✓ Takeoff'} ${tk.items.length} ${ar ? 'بند' : 'items'}`);
+        if (liveEl) {
+          const summary = tk.items.map(it => {
+            const p = getItemByCode(it.code);
+            return `${p?.arDesc || it.code} × ${it.qty}`;
+          }).join(' • ');
+          liveEl.textContent = `${ar ? 'تمت مراجعة الإملاء: ' : 'Dictation reviewed: '}${summary}`;
+        }
         if (added) {
           toast(ar ? `🎙️ تمت إضافة ${added} بند بالإملاء الصوتي` : `🎙️ Added ${added} items by dictation`, 'success');
         } else {

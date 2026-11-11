@@ -135,7 +135,7 @@ Phase 10 — Dashboard: totals, costs, progress, risks, missing & critical items
     if (/(مانعات|مانع|موانع).*(صواعق|تيار)|surge|arrester/i.test(s)) return { code: '205010302', score: 10 };
 
     // Sub-distribution steel panel (لوحة توزيع فرعية حديدية)
-    if (/لوحه\s*توزيع\s*فرعيه|لوحه فرعيه|فرعيه حديده|minipillar/i.test(s)) return { code: '308010101', score: 10 };
+    if (/لوحه\s*توزيع\s*فرعيه|لوحه فرعيه|فرعيه حديده|ميني\s*(?:بلر|بيلر|بيلار)|مني\s*بلر|minipillar/i.test(s)) return { code: '308010101', score: 10 };
 
     // Open excavation / LV trench (حفر مفتوح)
     if (/حفر\s*مفتوح|حفر\s*مسار\s*كابل|حفر مسار ج منخفض|open excavation/i.test(s)) return { code: '301010101', score: 10 };
@@ -189,7 +189,60 @@ Phase 10 — Dashboard: totals, costs, progress, risks, missing & critical items
   },
 
   /* ────────────────────────────────────────────────
-     5) SMART TAKEOFF — text → BOQ items
+     5) VOICE TAKEOFF — context-aware electrical dictation
+     Lengths stay with cables; panels, joints and terminations keep their own quantities.
+     ──────────────────────────────────────────────── */
+  voiceTakeoff(text) {
+    const s = normalizeArabic(String(text || '')).toLowerCase().replace(/[٠-٩]/g, d => '0123456789'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]);
+    const found = [];
+    const add = (code, qty, kind, size, at) => {
+      if (code && getItemByCode(code) && Number(qty) > 0) found.push({ code, qty: Number(qty), score: 12, kind, size: size || null, at: at == null ? -1 : at });
+    };
+    const codeFor = (kind, size) => {
+      const large = Number(size) > 185;
+      if (kind === 'cable') return large ? '304010102' : '304010101';
+      if (kind === 'joint') return large ? '305010102' : '305010101';
+      return large ? '305010302' : '305010301';
+    };
+    let m;
+    const panelRe = /(?:(\d+)\s*)?(?:تركيب\s*)?(?:ميني\s*(?:بلر|بيلر|بيلار)|مني\s*بلر|لوحه\s*(?:توزيع\s*)?فرعيه(?:\s*حديده)?|minipillar)/gi;
+    while ((m = panelRe.exec(s))) add('308010101', Number(m[1]) || 1, 'panel', null, m.index);
+
+    const cables = [];
+    const addCable = (size, length, at) => {
+      if (!(Number(size) > 0 && Number(length) > 0)) return;
+      if (cables.some(c => c.size === Number(size) && Math.abs(c.at - at) < 5)) return;
+      cables.push({ size: Number(size), at });
+      add(codeFor('cable', size), length, 'cable', size, at);
+    };
+    const before = /(\d+(?:\.\d+)?)\s*(?:متر|م)\s*(?:تمديد\s*)?(?:كيبل|كابل)\s*(?:4\s*[x*×]\s*)?(\d{2,3})\s*(?:مم|mm)?/gi;
+    while ((m = before.exec(s))) addCable(m[2], m[1], m.index);
+    const after = /(?:تمديد|مد|تركيب)?\s*(?:كيبل|كابل)\s*(?:4\s*[x*×]\s*)?(\d{2,3})\s*(?:مم|mm)?\s*(\d+(?:\.\d+)?)\s*(?:متر|م)(?!\s*م)/gi;
+    while ((m = after.exec(s))) addCable(m[1], m[2], m.index);
+
+    const lastSize = at => {
+      const previous = cables.filter(c => c.at < at).sort((a, b) => b.at - a.at)[0];
+      return previous ? previous.size : null;
+    };
+    const accessory = (regex, kind) => {
+      while ((m = regex.exec(s))) {
+        const size = Number(m[2]) || lastSize(m.index);
+        if (size) add(codeFor(kind, size), Number(m[1]) || 1, kind, size, m.index);
+      }
+    };
+    accessory(/(?:(\d+)\s*)?(?:وصله|وصلة|وصلات)\s*(?:4\s*[x*×]\s*)?(\d{2,3})?/gi, 'joint');
+    accessory(/(?:(\d+)\s*)?(?:نهايه|نهاية|نهايات|ترمنال)\s*(?:4\s*[x*×]\s*)?(\d{2,3})?/gi, 'term');
+
+    const merged = [], map = new Map();
+    found.forEach(row => {
+      if (map.has(row.code)) map.get(row.code).qty += row.qty;
+      else { const copy = { ...row }; map.set(row.code, copy); merged.push(copy); }
+    });
+    return { items: merged, unresolved: [], totalSegments: found.length, source: 'voice-context' };
+  },
+
+  /* ────────────────────────────────────────────────
+     6) SMART TAKEOFF — text → BOQ items
      ──────────────────────────────────────────────── */
   smartTakeoff(text, opts) {
     const segments = this._split(text);

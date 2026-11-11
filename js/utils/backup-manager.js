@@ -23,6 +23,7 @@ window.BackupManager = (() => {
     try { state.store = JSON.parse(localStorage.getItem('ps_sec_v3') || 'null'); } catch { state.store = null; }
     try { state.ai = JSON.parse(localStorage.getItem('se_ai_config_v1') || 'null'); } catch { state.ai = null; }
     try { state.cert = JSON.parse(localStorage.getItem('cert_session_cache') || 'null'); } catch { state.cert = null; }
+    try { state.operations = JSON.parse(localStorage.getItem('sec_field_operations_v1') || 'null'); } catch { state.operations = null; }
     return state;
   }
 
@@ -30,6 +31,10 @@ window.BackupManager = (() => {
     if (state.store) localStorage.setItem('ps_sec_v3', JSON.stringify(state.store));
     if (state.ai) localStorage.setItem('se_ai_config_v1', JSON.stringify(state.ai));
     if (state.cert) localStorage.setItem('cert_session_cache', JSON.stringify(state.cert));
+    if (Object.prototype.hasOwnProperty.call(state, 'operations')) {
+      if (state.operations) localStorage.setItem('sec_field_operations_v1', JSON.stringify(state.operations));
+      else localStorage.removeItem('sec_field_operations_v1');
+    }
   }
 
   // Redact the AI API key so it never leaves the device inside .sebk exports.
