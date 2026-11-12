@@ -19,3 +19,7 @@ Start LM Studio's local server with its OpenAI-compatible API enabled, then set 
 Cloud providers require a provider-issued API key. The current browser-only app stores that key in unencrypted `localStorage`; this is suitable only for controlled development/testing, not production credentials. Prompts and the context assembled by the app are sent directly from the browser to the configured provider. Do not send confidential project, customer, or contract data until an approved server-side integration and data policy are in place.
 
 The shared Gemini link is an external service and follows that service's own account, privacy, and billing terms. No provider is contacted automatically just by opening the assistant page.
+
+## Login and access control
+
+The browser app currently has no configured identity provider or trusted application server. Its previous demo login and client-only Google credential preview are disabled; the sign-in dialog explains that secure sign-in is not yet available. Do not treat local browser sessions, role labels, or locally stored project records as authorization. Email one-time codes require a configured identity service (including email delivery) and a server-side data/access policy before production use.

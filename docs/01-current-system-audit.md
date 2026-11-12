@@ -33,13 +33,13 @@ This audit covers the checked-in browser application, its JavaScript and CSS mod
 
 - Work orders, documents, revisions, field diaries, procurement, equipment, labor, inspections, accepted quantities, and collection records are not a single server-backed work-order record.
 - Local storage is device/browser scoped, can be cleared or exhausted, and does not provide team access, concurrency control, server authorization, or reliable synchronization.
-- The Google sign-in preview decodes a browser token and stores a local session; it does not verify the token on a trusted server. Demo login and role selection are local UI behavior, not access control.
+- The previous client-only Google preview and demo login have been disabled. The login screen is informational until an OTP/identity provider and trusted verification service are configured; local browser state is not access control.
 - Imported documents and locally stored project information have no server-side access policy or managed file storage.
 - The tracked `العقد الموحد 20206.xlsx` file is zero bytes, so it cannot serve as a valid source workbook.
 - Some features depend on external CDN/network availability. Offline behavior, multi-device recovery, OCR, cross-device collaboration, and production authentication were not established by the browser checks.
 - Voice recognition previously offered Saudi and Egyptian Arabic locale choices. Browser speech recognition/synthesis availability and voice quality vary by browser/device; a voice example was not present in the supplied attachments.
 - The existing Odoo option is a client-side CSV product-import staging file. It is not a live Odoo connection, does not create quotations/orders, and cannot validate target Odoo fields, units, categories, or access rights.
-- Pricing logic includes an emergency multiplier in the BOQ path. Applicability must be verified against an authoritative contract clause for each relevant item; a UI label or stored status is not contractual evidence.
+- Emergency status is a BOQ classification only; it does not modify item rates. Any applicable contract percentage must be entered as its own price-list item and reviewed against the authoritative clause and calculation basis.
 - The current workflow can display local “approved” status without an external approval document. Such a status must not be presented as SEC acceptance.
 - The existing profitability budget allocation is estimated and the interface accepts manually entered amounts. It must not be mistaken for verified actual cost or accounting profit.
 
@@ -68,7 +68,7 @@ This audit covers the checked-in browser application, its JavaScript and CSS mod
 ## Incremental migration plan
 
 1. **Foundation and audit (current):** preserve the existing application; document verified behavior, trust boundaries, data provenance, and gaps. Add a tested domain module for work-order-linked execution records without changing the existing BOQ format.
-2. **BOQ and pricing:** add source/version metadata, unit-aware review, non-destructive revisions, price variance reports, and a final-review checklist. Confirm contractual source files and emergency-rate clauses before changing price behavior.
+2. **BOQ and pricing:** add source/version metadata, unit-aware review, non-destructive revisions, price variance reports, and a final-review checklist. Verify the percentage item and calculation basis against the authoritative contract.
 3. **Resources and procurement:** add evidence-backed material movements, actual labor/equipment cost records, waste/logistics reconciliation, and inspections. Do not generate “actual” costs from estimates.
 4. **Field workflow:** introduce a PWA and local IndexedDB/outbox for field capture, then define conflict-safe synchronization with a central API. Browser-local records alone are not team synchronization.
 5. **Quality and payment:** connect inspected/accepted quantities, evidence, and certificate revisions; keep submission, approval, and collection states separate.

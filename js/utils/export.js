@@ -17,11 +17,11 @@ function _sheetName(m) {
   return (m && m.project ? m.project : 'BOQ').slice(0, 28).replace(/[\\/:*?"<>|]/g, '_');
 }
 
-/* سعر الوحدة النهائي: السعر الموحد (أو المخصص) × 1.45 لمقايسات الطوارئ — أي بند */
-function _priceOf(i, isEmerg) {
+/* Emergency is a work-order classification, not a blanket price modifier. */
+function _priceOf(i) {
   const p = i.priceItem || (typeof getItemByCode === 'function' ? getItemByCode(i.code) : null) || {};
-  const base = i.contractPrice != null ? i.contractPrice : (i.customPrice || p.newPrice || 0);
-  return Math.round(base * (isEmerg ? 1.45 : 1));
+  const base = i.contractPrice != null ? i.contractPrice : (i.customPrice ?? p.newPrice ?? 0);
+  return Math.round(base);
 }
 
 /* ─────────── CSV ─────────── */
@@ -30,7 +30,7 @@ function exportToCSV(boqData, meta) {
   const rows = [['Code', 'Description AR', 'Description EN', 'UOM', 'Qty', 'Unit Price (SAR)', 'Total (SAR)']];
   (boqData.items || []).forEach(i => {
     const p = i.priceItem || (typeof getItemByCode === 'function' ? getItemByCode(i.code) : null) || {};
-    const up = _priceOf(i, isEmerg);
+    const up = _priceOf(i);
     rows.push([i.code, p.arDesc || '', p.enDesc || '', p.uom || '', i.qty, up, up * i.qty]);
   });
   const csv = rows.map(r => r.map(c => '"' + String(c == null ? '' : c).replace(/"/g, '""') + '"').join(',')).join('\r\n');
@@ -42,7 +42,7 @@ function exportToJSON(boqData, meta) {
   const isEmerg = !!boqData.isEmergency;
   const payload = {
     meta: { rfx: '4000083770', wo: meta.wo, project: meta.project, location: meta.location, date: meta.date, emergency: isEmerg, generatedAt: new Date().toISOString() },
-    items: (boqData.items || []).map(i => ({ code: i.code, qty: i.qty, unitPrice: _priceOf(i, isEmerg) })),
+    items: (boqData.items || []).map(i => ({ code: i.code, qty: i.qty, unitPrice: _priceOf(i) })),
   };
   _download(new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }), _sheetName(meta) + '.json');
 }
@@ -55,7 +55,7 @@ function exportToXML(boqData, meta) {
   const isEmerg = !!boqData.isEmergency;
   const items = (boqData.items || []).map(i => {
     const p = i.priceItem || (typeof getItemByCode === 'function' ? getItemByCode(i.code) : null) || {};
-    return { code: i.code, arDesc: p.arDesc || '', enDesc: p.enDesc || '', uom: p.uom || '', qty: i.qty, unitPrice: _priceOf(i, isEmerg) };
+    return { code: i.code, arDesc: p.arDesc || '', enDesc: p.enDesc || '', uom: p.uom || '', qty: i.qty, unitPrice: _priceOf(i) };
   });
   const sub = items.reduce((s, i) => s + i.unitPrice * i.qty, 0);
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -111,11 +111,11 @@ function exportToExcel(boqData, meta) {
     return;
   }
   const isEmerg = !!boqData.isEmergency;
-  const rows = [[meta.wo || '', meta.project || '', meta.location || '', isEmerg ? 'مقايسة طوارئ ×1.45' : '']];
+  const rows = [[meta.wo || '', meta.project || '', meta.location || '', isEmerg ? 'مقايسة طوارئ — أسعار البنود المرجعية' : '']];
   rows.push(['الرمز', 'الوصف', 'الوحدة', 'الكمية', 'السعر (ر.س)', 'الإجمالي (ر.س)']);
   (boqData.items || []).forEach(i => {
     const p = i.priceItem || (typeof getItemByCode === 'function' ? getItemByCode(i.code) : null) || {};
-    const up = _priceOf(i, isEmerg);
+    const up = _priceOf(i);
     rows.push([i.code, (p.arDesc || '') + '\n' + (p.enDesc || ''), p.uom || '', i.qty, up, up * i.qty]);
   });
   const ws = XLSX.utils.aoa_to_sheet(rows);
@@ -143,7 +143,7 @@ function exportToPDF(boqData, meta) {
   const isEmerg = !!boqData.isEmergency;
   const items = (boqData.items || []).map(i => {
     const p = i.priceItem || (typeof getItemByCode === 'function' ? getItemByCode(i.code) : null) || {};
-    return { ...i, arDesc: p.arDesc, enDesc: p.enDesc, uom: p.uom, unitPrice: _priceOf(i, isEmerg) };
+    return { ...i, arDesc: p.arDesc, enDesc: p.enDesc, uom: p.uom, unitPrice: _priceOf(i) };
   });
   const sub = items.reduce((s, i) => s + i.unitPrice * i.qty, 0);
   const vat = Math.round(sub * 0.15);

@@ -28,7 +28,7 @@ const AIEngine = {
 المرحلة 5 — إنشاء BOQ تلقائي: رقم البند، الوصف، الوحدة، الكمية، سعر الوحدة، الإجمالي، مع إمكانية التعديل والإضافة والحذف والدمج والتقسيم.
 المرحلة 6 — مطابقة العقد الموحد السعودي: مراجعة البنود مع مواصفات الشركة السعودية للطاقة والمواصفات القياسية السعودية، والتنبيه على البنود الناقصة والكميات غير المنطقية والتعارضات.
 المرحلة 7 — مقارنة المقايسات: المقارنة بين النسخ وإظهار المضاف والمحذوف والمعدل وفروقات الأسعار والكميات.
-المرحلة 8 — التكامل: دعم التصدير إلى Odoo وERPNext وCSV وExcel وPDF وJSON وXML.
+المرحلة 8 — التكامل: استخدم صيغ الاستيراد والتصدير المنفذة فعلياً فقط؛ تكامل Odoo الحالي تجهيز CSV للمنتجات دون اتصال مباشر أو كتابة عبر API.
 المرحلة 9 — النسخ الاحتياطي: إدارة الإصدارات والنسخ الاحتياطية اليومية والأسبوعية.
 المرحلة 10 — لوحة التحكم: إجمالي الكميات والتكاليف ونسبة الإنجاز والمخاطر والبنود الناقصة والحرجة مع الرسوم البيانية وخرائط GIS.`
       : `Required workflow:
@@ -39,13 +39,13 @@ Phase 4 — Smart drawing: detect elements in images/drawings, identify service 
 Phase 5 — Automatic BOQ: item no., description, unit, qty, unit price, total; support manual edit, add, delete, merge, split.
 Phase 6 — Saudi unified contract matching: review items against Saudi Energy specs and SASO standards; alert on missing items, unreasonable quantities, conflicts.
 Phase 7 — BOQ comparison: compare versions and show added, removed, modified items plus price and quantity differences.
-Phase 8 — Integration: export to Odoo, ERPNext, CSV, Excel, PDF, JSON, XML.
+Phase 8 — Integration: use only import/export formats implemented in the app; Odoo currently stages product CSV only, with no live ERP/API writes.
 Phase 9 — Backup: versioning and daily/weekly backups.
 Phase 10 — Dashboard: totals, costs, progress, risks, missing & critical items, charts, and GIS maps.`;
 
     return (ar
-      ? `أنت محرك تسعير ومقايسات لشركة الأساس العريض للمقاولات على العقد الموحد الجديد RFx 4000083770 مع الشركة السعودية للطاقة. ${ROLES}\n\n${PHASES}\n\nقواعد أساسية: أجب بلغة السؤال (عربي افتراضياً). عند طلب مقايسة رد بجدول مرتب (الرمز | الوصف | الوحدة | الكمية | السعر الموحد | الإجمالي) وميّز الأعمال عن المواد. قاعدة الربط: كل بند توريد يقابله بند تركيب. مقايسات الطوارئ بنسبة 145%. لكل بند مذكور أرفق رمزه من قائمة الأسعار الموحدة. الأقسام: `
-      : `You are the pricing & BOQ engine for Al-Asas Al-Areed Contracting on the Unified Contract RFx 4000083770 with Saudi Energy Company. ${ROLES}\n\n${PHASES}\n\nCore rules: Answer in the user's language (Arabic by default). When asked for a BOQ reply with a tidy table (code | description | unit | qty | unified price | total) and distinguish materials vs works. Linkage rule: every supply item needs a matching installation item. Emergency BOQs use 145%. Always attach official price-list codes. Sections: `)
+      ? `أنت مساعد هندسي للتسعير والمقايسات لشركة الأساس العريض للمقاولات. ${ROLES}\n\n${PHASES}\n\nقواعد ملزمة: أجب بلغة السؤال. استخدم سعر ووحدة ووصف البند المطابق من البيانات المتاحة مع رمز المصدر، ولا تغيّر المقايسة الأساسية أو سعرها المرجعي. افصل سعر العقد عن سعر العرض وتكلفة التنفيذ. تصنيف أمر العمل كطوارئ لا يغيّر سعر أي بند ولا يطبق زيادة عامة؛ إذا طُلبت النسبة التعاقدية فأدرج بندها المستقل من قائمة الأسعار بعد التحقق من الرمز والوصف والوحدة والمصدر، ولا تكرر أثرها. لا تخترع أسعار سوق أو أجوراً أو كميات أو معايير. لا تدّعِ البحث الخارجي أو اعتماداً رسمياً أو وجود وكلاء مستقلين/تكاملات مباشرة ما لم تُنفّذ الأداة فعلياً وتعرض مصدرها وتاريخها. صرّح بالبيانات الناقصة، وميّز التقدير عن الفعلي، واطلب مراجعة بشرية للتطابقات والتغييرات الجوهرية. عند طلب مقايسة اعرض جدولاً (الرمز | الوصف | الوحدة | الكمية | سعر البند المرجعي | الإجمالي). لا تفترض أن كل بند توريد يستلزم بند تركيب؛ اعرض الارتباط المقترح للمراجعة فقط. الأقسام: `
+      : `You are an engineering pricing and BOQ assistant for Al-Asas Al-Areed Contracting. ${ROLES}\n\n${PHASES}\n\nMandatory rules: Answer in the user's language. Use the matching item code, unit, description and rate from available data; never alter the contract baseline. Distinguish contract rates, offer prices, and actual execution costs. Emergency classification never changes an item's rate and never triggers a blanket uplift. If the contractual percentage item is requested, list it separately from the price list only after checking its code, description, unit, and source; never apply its effect twice. Do not invent market prices, wages, quantities, or standards. Do not claim external research, official approval, autonomous specialist agents, or live integrations unless actually executed and accompanied by source/date. State missing data, separate estimates from actuals, and require human review for matching and material changes. For BOQs, use a table (code | description | unit | qty | reference item rate | total). Do not assume every supply item requires a matching installation item; present a suggested linkage for review only. Sections: `)
       + cats
       + (ar ? '. عيّنة من بنود الأسعار الموحدة (رمز|وصف|إنجليزي|وحدة|سعر): ' : '. Sample unified price items (code|desc|english|uom|price): ')
       + sample;
